@@ -9,11 +9,6 @@ import UIKit
 
 class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate {
    
-    func sentEmpData(Name: String, Salary: String) {
-        print("Name - \(Name) Sal - \(Salary)")
-    }
-    
-    
     private var viewModel = EmployeeViewModel()
 
     
@@ -26,6 +21,9 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     @IBOutlet weak var txtEmpSalary: UITextField!
     @IBOutlet weak var employeeTableView: UITableView!
     
+    func sentEmpData(Name: String, Salary: String) {
+        print("Name - \(Name) Sal - \(Salary)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +44,7 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         
     }
     
-    @objc func Tapped1() {
+    @objc func addButtonTapped() {
         print("Tapped1")
         if let customPopup = storyboard?.instantiateViewController(withIdentifier: "CustomPopupViewController") as? PopUpViewControllerForAddding {
                    customPopup.modalPresentationStyle = .overCurrentContext
@@ -57,8 +55,17 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     }
     @IBAction func btnAddEmpTapped(_ sender: Any) {
         
-        let salVal = Double(txtEmpSalary.text ?? "11" )!
-        self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
+        if ((txtEmpName.text?.isEmpty) != nil) || ((txtEmpSalary.text?.isEmpty) != nil) {
+            
+            let alert = UIAlertController(title: "Alert", message: "Name & Salary is Compulsory", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+        
+        }
+        else{
+            let salVal = Double(txtEmpSalary.text ?? "11" )!
+            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
+        }
             
     }
 }

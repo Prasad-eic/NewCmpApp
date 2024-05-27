@@ -19,11 +19,20 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var btnNameEquals: UIButton!
     @IBOutlet weak var btnNameContains: UIButton!
     
-
+    @IBOutlet weak var lblNameEqualTo: UILabel!
+    @IBOutlet weak var lblNameContains: UILabel!
+    @IBOutlet weak var lblSalaryLessThan: UILabel!
+    @IBOutlet weak var lblSalaryMoreThan: UILabel!
     
+    
+    
+    var buttons: [UIButton] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        buttons = [btnSalaryMin, btnSalaryMax, btnNameEquals, btnNameContains, btnNoFilter]
+                setupButtons()
         // Do any additional setup after loading the view.
         txtNameSalary.delegate = self
 //        txtNameSalary.addTarget(self, action: #selector(textFieldDidChange), for:.editingChanged)
@@ -33,6 +42,13 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
 
 
     }
+    private func setupButtons() {
+            for button in buttons {
+                button.setImage(UIImage(systemName: "circle"), for: .normal)
+                button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .selected)
+                button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+            }
+        }
     @IBAction func btnNoFilterTapped(_ sender: Any) {
 
     }
@@ -48,14 +64,18 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
         
         if (textField == txtNameSalary) {
             print("Edited \(String(describing: txtNameSalary.text))")
+            lblNameEqualTo.text = "Name Equals to - \(txtNameSalary.text ?? "-")"
+            lblNameContains.text = "Name Contains to - \(txtNameSalary.text ?? "-")"
             
         }
         if (textField == txtMaxSalary) {
             print("Edited Max \(String(describing: txtMaxSalary.text))")
-            
+            lblSalaryMoreThan.text = "Salary is More than - \(txtMaxSalary.text ?? "-")"
         }
         if (textField == txtMinSalary) {
             print("Edited Min \(String(describing: txtMinSalary.text))")
+            lblSalaryMoreThan.text = "Salary is less than - \(txtMinSalary.text ?? "-")"
+
             
         }
 
@@ -67,13 +87,11 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
            self.dismiss(animated: true, completion: nil)
        }
     @IBAction func didTapButton(_ sender: UIButton) {
-        for button in self.view.subviews as [UIView] {
-            if button is UIButton {
-                 // Do whatever you want
-                button.backgroundColor = UIColor.blue
-                 button.layer.borderColor = button.tag == sender.tag ? UIColor.blue.cgColor : UIColor.lightGray.cgColor
+        
+        for button in buttons {
+                    button.isSelected = false
+                }
+                sender.isSelected = true
             }
-        }
-    }
     
 }

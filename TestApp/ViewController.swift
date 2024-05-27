@@ -10,16 +10,18 @@ import CoreData
 
 class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate {
 
+  
+    
+    @IBOutlet weak var companyTableView: UITableView!
+    var companyValuesArray = [String]()
+    private var viewModel = CompanyViewModel()
+ 
     func userDidEnterInformation(info: String) {
         print("Entred String - \(info)")
         self.viewModel.addCompany(name: info, Id: 12)
 
     }
     
-    @IBOutlet weak var companyTableView: UITableView!
-    
-    
-    private var viewModel = CompanyViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         companyTableView.dataSource = self
@@ -46,6 +48,14 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         }
         
         viewModel.fetchCompany()
+        
+//        for i in 0...viewModel.numberOfComapnies()-1
+//        {
+//            let cmp = viewModel.company(at: i)
+//            companyValuesArray.append(cmp.companyName ?? "")
+//        }
+//        print("Array - \(companyValuesArray)")
+
         
     }
     @objc func BtnMoreTapped() {

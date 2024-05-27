@@ -13,10 +13,30 @@ class EmployeeViewModel {
 
     private var employee: [EmpEntity] = []
     private var maxPrdicate: [EmpEntity] = []
+    private var getEmpByName: [EmpEntity] = []
+
 
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     var didUpdateData: (() -> Void)?
+    
+    func getValueByName()
+    {
+        let query:NSFetchRequest<EmpEntity> = EmpEntity.fetchRequest()
+               let key = "PSL Corp"
+
+               let predicate = NSPredicate(format: "empCompanyName = '%@'", key)
+               query.predicate = predicate
+
+               do{
+                   getEmpByName = try context.fetch(query)
+                   print("Comp - \(getEmpByName.count)")
+
+               }catch{
+                   print("error")
+               }
+        
+    }
 
     func fetchAllEmployees() {
         let request: NSFetchRequest<EmpEntity> = EmpEntity.fetchRequest()
@@ -40,6 +60,8 @@ class EmployeeViewModel {
                }catch{
                    print("error")
                }
+        getValueByName()
+
         
     }
     func addEmployee(name: String,salary: Double,cmpName: String, Id: Int16) {

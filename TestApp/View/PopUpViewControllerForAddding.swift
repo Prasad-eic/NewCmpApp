@@ -28,9 +28,18 @@ class PopUpViewControllerForAddding: UIViewController {
     }
     
     @IBAction func btnAddTapped(_ sender: Any) {
+        if ((txtCompanyName.text?.isEmpty) != nil) {
+            
+            let alert = UIAlertController(title: "Alert", message: "Company Name is Compulsory", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
         
-        delegate?.userDidEnterInformation(info: txtCompanyName.text!)
-       self.dismiss(animated: true, completion: nil)
+        }else
+        {
+            
+            delegate?.userDidEnterInformation(info: txtCompanyName.text!)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func onCloseButtonPressed(_ sender: UIButton) {
@@ -38,6 +47,8 @@ class PopUpViewControllerForAddding: UIViewController {
        }
     
     @IBAction func btnAddEmpTapped(_ sender: Any) {
+        
+        
         delegate?.sentEmpData(Name: txtEmpName.text ?? "NA", Salary: txtEmpSalary.text ?? "NAA")
        self.dismiss(animated: true, completion: nil)
 
