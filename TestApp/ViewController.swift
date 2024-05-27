@@ -30,10 +30,10 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
 
 
 //        let leftNaviButton = UIBarButtonItem(title: "Button", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Tapped1))
-        let leftNaviButton = UIBarButtonItem(image: UIImage(named: "more")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(Tapped1))
+        let leftNaviButton = UIBarButtonItem(image: UIImage(named: "more")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnMoreTapped))
            self.navigationItem.leftBarButtonItem = leftNaviButton
         
-        let rightNaviButton = UIBarButtonItem(image: UIImage(systemName: "plus")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(Tapped1))
+        let rightNaviButton = UIBarButtonItem(image: UIImage(systemName: "plus")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnPlusTapped1))
         self.navigationItem.rightBarButtonItem = rightNaviButton
         
         
@@ -48,8 +48,23 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         viewModel.fetchCompany()
         
     }
-    
-    @objc func Tapped1() {
+    @objc func BtnMoreTapped() {
+        
+        let alert = UIAlertController(title: "", message: "Change Language To", preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "English", style: .default , handler:{ (UIAlertAction)in
+                print("User click English")
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Spanish", style: .default , handler:{ (UIAlertAction)in
+                print("User click Spanish")
+            }))
+
+            self.present(alert, animated: true, completion: {
+                print("completion block")
+            })
+    }
+    @objc func BtnPlusTapped1() {
         print("Tapped1")
         if let customPopup = storyboard?.instantiateViewController(withIdentifier: "CustomPopupViewController") as? PopUpViewControllerForAddding {
                    customPopup.modalPresentationStyle = .overCurrentContext
