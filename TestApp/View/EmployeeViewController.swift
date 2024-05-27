@@ -57,20 +57,6 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     }
     @IBAction func btnAddEmpTapped(_ sender: Any) {
         
-//                let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
-//
-//                alert.addTextField { (textField) in
-//                    textField.text = "Some default text"
-//                }
-//
-//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-//                    let textField = alert?.textFields![0]
-//                    print("Text field: \(String(describing: textField!.text))")
-//                    var nameVal  = textField?.text
-//                    self.viewModel.addCompany(name: nameVal ?? "NA", Id: 1)
-//
-//                }))
-//                self.present(alert, animated: true, completion: nil)
         let salVal = Double(txtEmpSalary.text ?? "11" )!
         self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
             

@@ -18,6 +18,7 @@ class PopUpViewControllerForAddding: UIViewController {
     @IBOutlet weak var txtEmpName: UITextField!
     @IBOutlet weak var txtEmpSalary: UITextField!
 
+  
     @IBOutlet weak var viewForEmployee: UIView!
     @IBOutlet weak var viewForCompany: UIView!
     override func viewDidLoad() {
@@ -28,29 +29,15 @@ class PopUpViewControllerForAddding: UIViewController {
     
     @IBAction func btnAddTapped(_ sender: Any) {
         
-        // call this method on whichever class implements our delegate protocol
         delegate?.userDidEnterInformation(info: txtCompanyName.text!)
        self.dismiss(animated: true, completion: nil)
-
-//        print("Tapped - \(txtCompanyName.text!)")
-
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func onCloseButtonPressed(_ sender: UIButton) {
            self.dismiss(animated: true, completion: nil)
        }
     
     @IBAction func btnAddEmpTapped(_ sender: Any) {
-//                delegate?.userDidEnterInformation(info: txtCompanyName.text!)
         delegate?.sentEmpData(Name: txtEmpName.text ?? "NA", Salary: txtEmpSalary.text ?? "NAA")
        self.dismiss(animated: true, completion: nil)
 

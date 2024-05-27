@@ -12,8 +12,15 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var txtMaxSalary: UITextField!
     @IBOutlet weak var txtMinSalary: UITextField!
     @IBOutlet weak var txtNameSalary: UITextField!
+    
+    @IBOutlet weak var btnNoFilter: UIButton!
+    @IBOutlet weak var btnSalaryMin: UIButton!
+    @IBOutlet weak var btnSalaryMax: UIButton!
+    @IBOutlet weak var btnNameEquals: UIButton!
+    @IBOutlet weak var btnNameContains: UIButton!
+    
 
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +32,16 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
         txtMinSalary.addTarget(self, action: #selector(FilterViewController.textFieldDidChange(_:)), for: .editingChanged)
 
 
+    }
+    @IBAction func btnNoFilterTapped(_ sender: Any) {
+    }
+    @IBAction func btnSalaryMinTapped(_ sender: Any) {
+    }
+    @IBAction func btnSalaryMaxTapped(_ sender: Any) {
+    }
+    @IBAction func btnNameEqualsTapped(_ sender: Any) {
+    }
+    @IBAction func btnNameContainsTapped(_ sender: Any) {
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         
@@ -40,23 +57,11 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
             print("Edited Min \(String(describing: txtMinSalary.text))")
             
         }
-//        print("Edited \(String(describing: txtNameSalary.text))")
 
     }
-    
-//    @objc func textFieldDidChange() {
-//        
-//        print("Edited \(String(describing: txtNameSalary.text))")
-//    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+       
     }
-    */
     @IBAction func onOKButtonPressed(_ sender: UIButton) {
            self.dismiss(animated: true, completion: nil)
        }

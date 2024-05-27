@@ -78,46 +78,6 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     }
 }
 
-
-//class CustomSectionHeaderView: UIView {
-//
-//    let titleLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//    
-//    let button: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Add", for: .normal)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-//    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setupView()
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        setupView()
-//    }
-//    
-//    private func setupView() {
-//        addSubview(titleLabel)
-//        addSubview(button)
-//        
-//        NSLayoutConstraint.activate([
-//            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-//            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            
-//            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-//            button.centerYAnchor.constraint(equalTo: centerYAnchor)
-//        ])
-//    }
-//}
-
 extension ViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfComapnies()
@@ -137,7 +97,6 @@ extension ViewController {
          button.setTitleColor(.blue, for: .normal)
          button.backgroundColor = UIColor.gray
          button.layer.cornerRadius = 5
-//         button.frame = CGRect(x: 15, y: -50, width: 300, height: 500)
          button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
          button.tag = section
          

@@ -342,7 +342,10 @@
                                                     <constraint firstAttribute="width" constant="15" id="cT0-pu-cbB"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checkmark.rectangle" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system"/>
+                                                <connections>
+                                                    <action selector="btnNameEqualsTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="QKM-Pb-WIj"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Contains" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klo-V1-doz">
                                                 <rect key="frame" x="40.000000000000007" y="251" width="116.66666666666669" height="20"/>
@@ -360,7 +363,10 @@
                                                     <constraint firstAttribute="height" constant="15" id="mdH-zU-Kmd"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checkmark.rectangle" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system"/>
+                                                <connections>
+                                                    <action selector="btnNameContainsTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="dI0-ir-cq9"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary is less than" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSU-Gt-yIp">
                                                 <rect key="frame" x="40" y="325.66666666666669" width="136.66666666666666" height="20"/>
@@ -378,7 +384,11 @@
                                                     <constraint firstAttribute="width" constant="15" id="zbo-sa-C0m"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checkmark.rectangle" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system"/>
+                                                <connections>
+                                                    <action selector="btnSalaryMinTapped:" destination="Hag-YK-7IJ" eventType="touchUpInside" id="Fno-KM-yNc"/>
+                                                    <action selector="btnSalaryMinTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="Lb4-ss-M05"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary is more than" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OH-w5-WyQ">
                                                 <rect key="frame" x="40" y="366.66666666666669" width="145.66666666666666" height="20"/>
@@ -396,7 +406,10 @@
                                                     <constraint firstAttribute="height" constant="15" id="PBW-dN-a1E"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checkmark.rectangle" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system"/>
+                                                <connections>
+                                                    <action selector="btnSalaryMaxTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="CZd-kk-e7u"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsB-4t-Mw4">
                                                 <rect key="frame" x="268" y="493" width="60" height="35"/>
@@ -419,7 +432,10 @@
                                                     <constraint firstAttribute="height" constant="15" id="7Xv-ng-iOs"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checkmark.rectangle" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system" imagePadding="1"/>
+                                                <connections>
+                                                    <action selector="btnNoFilterTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="iII-RM-A16"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Yn-ONs">
                                                 <rect key="frame" x="199" y="8.6666666666666679" width="134" height="34"/>
@@ -511,12 +527,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="btnNameContains" destination="4Zt-9E-3W6" id="TC9-li-RV1"/>
+                        <outlet property="btnNameEquals" destination="0f4-HP-e2T" id="5QE-ei-YHJ"/>
+                        <outlet property="btnNoFilter" destination="Omc-Wi-0v2" id="VY8-Qp-4EY"/>
+                        <outlet property="btnSalaryMax" destination="cyx-HK-gwL" id="unr-fZ-LUf"/>
+                        <outlet property="btnSalaryMin" destination="SmD-hU-E8z" id="f2X-XT-eTs"/>
                         <outlet property="txtMaxSalary" destination="K7o-Zu-XoU" id="OdI-Fx-Mvt"/>
                         <outlet property="txtMinSalary" destination="FOO-o5-EAI" id="a3T-ra-YQg"/>
                         <outlet property="txtNameSalary" destination="haN-Yn-ONs" id="h6G-yi-lyJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ozb-6R-VbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Hag-YK-7IJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2682" y="4"/>
         </scene>
@@ -753,7 +775,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
+        <image name="square.dotted" catalog="system" width="128" height="114"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
