@@ -23,33 +23,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3DA6643D-EB86-4EEC-B19B-0EFDDD65F0CE"
+            uuid = "55626C77-FBF1-4827-98AC-12BFE1300742"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestApp/ViewModel/EmpVM.swift"
+            filePath = "TestApp/View/FilterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "fetchAllEmployees()"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "didTapButton(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "03C248A8-917F-4398-BCD7-D681A006953A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestApp/View/EmployeeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "55626C77-FBF1-4827-98AC-12BFE1300742 - ac916cca8e30e520"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestApp.FilterViewController.didTapButton(__C.UIButton) -&gt; ()"
+                  moduleName = "TestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Prasad.Lokhande/Documents/TestApp/TestApp/View/FilterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71">
+               </Location>
+               <Location
+                  uuid = "55626C77-FBF1-4827-98AC-12BFE1300742 - ac916cca8e30e520"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestApp.FilterViewController.didTapButton(__C.UIButton) -&gt; ()"
+                  moduleName = "TestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Prasad.Lokhande/Documents/TestApp/TestApp/View/FilterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

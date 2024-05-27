@@ -345,6 +345,7 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system"/>
                                                 <connections>
                                                     <action selector="btnNameEqualsTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="QKM-Pb-WIj"/>
+                                                    <action selector="didTapButton:" destination="vaB-qW-1f1" eventType="touchUpInside" id="2Rm-ec-HKF"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Contains" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klo-V1-doz">
@@ -366,6 +367,7 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system"/>
                                                 <connections>
                                                     <action selector="btnNameContainsTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="dI0-ir-cq9"/>
+                                                    <action selector="didTapButton:" destination="vaB-qW-1f1" eventType="touchUpInside" id="GhM-sv-xS4"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary is less than" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSU-Gt-yIp">
@@ -388,6 +390,7 @@
                                                 <connections>
                                                     <action selector="btnSalaryMinTapped:" destination="Hag-YK-7IJ" eventType="touchUpInside" id="Fno-KM-yNc"/>
                                                     <action selector="btnSalaryMinTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="Lb4-ss-M05"/>
+                                                    <action selector="didTapButton:" destination="vaB-qW-1f1" eventType="touchUpInside" id="5Yt-8d-r0Y"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary is more than" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OH-w5-WyQ">
@@ -409,6 +412,7 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="square.dotted" catalog="system"/>
                                                 <connections>
                                                     <action selector="btnSalaryMaxTapped:" destination="vaB-qW-1f1" eventType="touchUpInside" id="CZd-kk-e7u"/>
+                                                    <action selector="didTapButton:" destination="vaB-qW-1f1" eventType="touchUpInside" id="QoK-EJ-C6S"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsB-4t-Mw4">

@@ -34,6 +34,7 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
 
     }
     @IBAction func btnNoFilterTapped(_ sender: Any) {
+
     }
     @IBAction func btnSalaryMinTapped(_ sender: Any) {
     }
@@ -65,5 +66,14 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
     @IBAction func onOKButtonPressed(_ sender: UIButton) {
            self.dismiss(animated: true, completion: nil)
        }
+    @IBAction func didTapButton(_ sender: UIButton) {
+        for button in self.view.subviews as [UIView] {
+            if button is UIButton {
+                 // Do whatever you want
+                button.backgroundColor = UIColor.blue
+                 button.layer.borderColor = button.tag == sender.tag ? UIColor.blue.cgColor : UIColor.lightGray.cgColor
+            }
+        }
+    }
     
 }
