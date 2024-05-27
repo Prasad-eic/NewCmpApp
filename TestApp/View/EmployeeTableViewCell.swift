@@ -1,20 +1,24 @@
 //
-//  companyTableViewCell.swift
+//  EmployeeTableViewCell.swift
 //  TestApp
 //
-//  Created by Prasad Lokhande on 22/05/24.
+//  Created by Prasad Lokhande on 23/05/24.
 //
 
 import UIKit
 
-class companyTableViewCell: UITableViewCell {
-
+class EmployeeTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var salaryLabel: UILabel!
+    @IBOutlet weak var btnDelete: UIButton!
+
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

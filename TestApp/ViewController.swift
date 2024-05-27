@@ -9,9 +9,10 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate {
+
     func userDidEnterInformation(info: String) {
         print("Entred String - \(info)")
-        self.viewModel.addCompany(name: info, Id: 2)
+        self.viewModel.addCompany(name: info, Id: 12)
 
     }
     
@@ -30,8 +31,13 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
 
 //        let leftNaviButton = UIBarButtonItem(title: "Button", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Tapped1))
         let leftNaviButton = UIBarButtonItem(image: UIImage(named: "more")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(Tapped1))
-
            self.navigationItem.leftBarButtonItem = leftNaviButton
+        
+        let rightNaviButton = UIBarButtonItem(image: UIImage(systemName: "plus")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(Tapped1))
+        self.navigationItem.rightBarButtonItem = rightNaviButton
+        
+        
+        
         
         navigationController?.navigationBar.backgroundColor = .green
         
@@ -41,14 +47,6 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         
         viewModel.fetchCompany()
         
-        var val = viewModel.favDataNos()
-        print(val)
-        
-        for i in 0...val{
-            let cmp = viewModel.company(at: i)
-            print("Val - \(cmp.companyName ?? "")")
-
-        }
     }
     
     @objc func Tapped1() {
@@ -81,68 +79,85 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
 }
 
 
-class CustomSectionHeaderView: UIView {
-
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let button: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Add", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
-    }
-    
-    private func setupView() {
-        addSubview(titleLabel)
-        addSubview(button)
-        
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            button.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
-    }
-}
+//class CustomSectionHeaderView: UIView {
+//
+//    let titleLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
+//    
+//    let button: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("Add", for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+//    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupView()
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//        setupView()
+//    }
+//    
+//    private func setupView() {
+//        addSubview(titleLabel)
+//        addSubview(button)
+//        
+//        NSLayoutConstraint.activate([
+//            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+//            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            
+//            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+//            button.centerYAnchor.constraint(equalTo: centerYAnchor)
+//        ])
+//    }
+//}
 
 extension ViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfComapnies()
 //        return 0;
     }
-//    func numberOfSections(in tableView: UITableView) -> Int {
-////        return arraySection.count
-//    return viewModel.numberOfComapnies()
-//
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+//        return arraySection.count
+    return viewModel.numberOfComapnies()
 
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-//    {
-//        let headerView = CustomSectionHeaderView()
-//                headerView.titleLabel.text = "Section \(section)"
-//                headerView.button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
-//                return headerView
-//    }
-    @objc private func addButtonTapped() {
-           printContent("Section Btn Tapped")
+    }
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let view = UIView(frame: CGRect(x:0, y:0, width:150, height:18))
+        let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width-200, height:18))
+         let button = UIButton (frame: CGRect(x: tableView.frame.width-150, y: 5, width: 50, height: 20))
+         button.setTitle(" ADD ", for: .normal)
+         button.setTitleColor(.blue, for: .normal)
+         button.backgroundColor = UIColor.gray
+         button.layer.cornerRadius = 5
+//         button.frame = CGRect(x: 15, y: -50, width: 300, height: 500)
+         button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+         button.tag = section
+         
+         button.backgroundColor = UIColor.green
+        label.font = UIFont.systemFont(ofSize: 14)
+         let cmp = viewModel.company(at: section)
+         label.text = "Company Name - \(cmp.companyName ?? "")";
+        view.addSubview(label);
+        view.addSubview(button)
+        view.backgroundColor = UIColor.gray;
+         
+        return view
+
+    }
+    @objc private func addButtonTapped(sender:UIButton) {
+        print("Section - \(sender.tag)")
        }
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80.0
+
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
     }
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        

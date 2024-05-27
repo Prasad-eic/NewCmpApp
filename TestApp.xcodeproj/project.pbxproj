@@ -14,6 +14,9 @@
 		39AC56ED2BFE2ACE003227B4 /* companyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AC56EC2BFE2ACE003227B4 /* companyTableViewCell.swift */; };
 		39AC56EF2BFE2B0D003227B4 /* PopUpViewControllerForAddding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AC56EE2BFE2B0D003227B4 /* PopUpViewControllerForAddding.swift */; };
 		39AC56F12BFE4EA1003227B4 /* EmpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AC56F02BFE4EA1003227B4 /* EmpVM.swift */; };
+		39AC56F32BFF3A71003227B4 /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AC56F22BFF3A71003227B4 /* EmployeeViewController.swift */; };
+		39AC56F52BFF40DB003227B4 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AC56F42BFF40DB003227B4 /* EmployeeTableViewCell.swift */; };
+		39AC56F72BFF4D09003227B4 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AC56F62BFF4D09003227B4 /* FilterViewController.swift */; };
 		39DF24C42A5C20A30091747D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DF24C32A5C20A30091747D /* AppDelegate.swift */; };
 		39DF24C62A5C20A30091747D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DF24C52A5C20A30091747D /* SceneDelegate.swift */; };
 		39DF24C82A5C20A30091747D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DF24C72A5C20A30091747D /* ViewController.swift */; };
@@ -50,6 +53,9 @@
 		39AC56EC2BFE2ACE003227B4 /* companyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companyTableViewCell.swift; sourceTree = "<group>"; };
 		39AC56EE2BFE2B0D003227B4 /* PopUpViewControllerForAddding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewControllerForAddding.swift; sourceTree = "<group>"; };
 		39AC56F02BFE4EA1003227B4 /* EmpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpVM.swift; sourceTree = "<group>"; };
+		39AC56F22BFF3A71003227B4 /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
+		39AC56F42BFF40DB003227B4 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
+		39AC56F62BFF4D09003227B4 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		39DF24C02A5C20A30091747D /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39DF24C32A5C20A30091747D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39DF24C52A5C20A30091747D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +119,9 @@
 			children = (
 				39AC56EC2BFE2ACE003227B4 /* companyTableViewCell.swift */,
 				39AC56EE2BFE2B0D003227B4 /* PopUpViewControllerForAddding.swift */,
+				39AC56F22BFF3A71003227B4 /* EmployeeViewController.swift */,
+				39AC56F42BFF40DB003227B4 /* EmployeeTableViewCell.swift */,
+				39AC56F62BFF4D09003227B4 /* FilterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,8 +317,11 @@
 				39AC56EB2BFE2A69003227B4 /* companyVM.swift in Sources */,
 				39AC56F12BFE4EA1003227B4 /* EmpVM.swift in Sources */,
 				39AC56EF2BFE2B0D003227B4 /* PopUpViewControllerForAddding.swift in Sources */,
+				39AC56F52BFF40DB003227B4 /* EmployeeTableViewCell.swift in Sources */,
 				39DF24C42A5C20A30091747D /* AppDelegate.swift in Sources */,
+				39AC56F72BFF4D09003227B4 /* FilterViewController.swift in Sources */,
 				39AC56E22BFE2998003227B4 /* CoreDB.xcdatamodeld in Sources */,
+				39AC56F32BFF3A71003227B4 /* EmployeeViewController.swift in Sources */,
 				39DF24C62A5C20A30091747D /* SceneDelegate.swift in Sources */,
 				39AC56E72BFE2A19003227B4 /* companyModel.swift in Sources */,
 				39AC56ED2BFE2ACE003227B4 /* companyTableViewCell.swift in Sources */,
