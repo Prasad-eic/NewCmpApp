@@ -17,18 +17,28 @@ class PopUpViewControllerForAddding: UIViewController {
     @IBOutlet weak var txtCompanyName: UITextField!
     @IBOutlet weak var txtEmpName: UITextField!
     @IBOutlet weak var txtEmpSalary: UITextField!
-
+    var IntvalForShowView = ""
   
     @IBOutlet weak var viewForEmployee: UIView!
     @IBOutlet weak var viewForCompany: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("ViewVal - \(IntvalForShowView)")
+        if ((IntvalForShowView == "0")) {
+            
+            viewForEmployee.isHidden = true
+            viewForCompany.isHidden = false
+        }
+        else
+        { viewForCompany.isHidden = true
+            viewForEmployee.isHidden = false
+        }
         // Do any additional setup after loading the view.
     }
     
     @IBAction func btnAddTapped(_ sender: Any) {
-        if ((txtCompanyName.text?.isEmpty) != nil) {
+        if (txtCompanyName.text!.isEmpty) {
             
             let alert = UIAlertController(title: "Alert", message: "Company Name is Compulsory", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

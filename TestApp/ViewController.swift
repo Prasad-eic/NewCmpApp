@@ -21,7 +21,9 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         self.viewModel.addCompany(name: info, Id: 12)
 
     }
-    
+    func sentEmpData(Name: String, Salary: String) {
+        print("Name - \(Name) & Salary - \(Salary)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         companyTableView.dataSource = self
@@ -35,7 +37,7 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         let leftNaviButton = UIBarButtonItem(image: UIImage(named: "more")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnMoreTapped))
            self.navigationItem.leftBarButtonItem = leftNaviButton
         
-        let rightNaviButton = UIBarButtonItem(image: UIImage(systemName: "plus")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnPlusTapped1))
+        let rightNaviButton = UIBarButtonItem(image: UIImage(systemName: "plus")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnPlusTapped))
         self.navigationItem.rightBarButtonItem = rightNaviButton
         
         
@@ -74,14 +76,22 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
                 print("completion block")
             })
     }
-    @objc func BtnPlusTapped1() {
+    @objc func BtnPlusTapped() {
         print("Tapped1")
-        if let customPopup = storyboard?.instantiateViewController(withIdentifier: "CustomPopupViewController") as? PopUpViewControllerForAddding {
-                   customPopup.modalPresentationStyle = .overCurrentContext
-                   customPopup.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-                   navigationController?.present(customPopup, animated: true)
-            customPopup.delegate = self
-               }
+      showPopUpforAdd(val: 0)
+    }
+    
+    func showPopUpforAdd(val: Int)
+    {
+         let customPopup = storyboard?.instantiateViewController(withIdentifier: "CustomPopupViewController") as? PopUpViewControllerForAddding
+        customPopup?.IntvalForShowView = "\(val)"
+
+        customPopup?.modalPresentationStyle = .overCurrentContext
+        customPopup?.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+
+        navigationController?.present(customPopup!, animated: true,completion: nil)
+        customPopup?.delegate = self
+               
     }
     @IBAction func btnAddCompanyTapped(_ sender: Any) {
         
@@ -105,8 +115,8 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
 
 extension ViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfComapnies()
-//        return 0;
+//        return viewModel.numberOfComapnies()
+        return 0;
     }
     func numberOfSections(in tableView: UITableView) -> Int {
 //        return arraySection.count
@@ -138,6 +148,7 @@ extension ViewController {
     }
     @objc private func addButtonTapped(sender:UIButton) {
         print("Section - \(sender.tag)")
+        showPopUpforAdd(val: 1)
        }
 
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
