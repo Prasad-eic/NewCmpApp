@@ -40,8 +40,8 @@ class PopUpViewControllerForAddding: UIViewController {
     @IBAction func btnAddTapped(_ sender: Any) {
         if (txtCompanyName.text!.isEmpty) {
             
-            let alert = UIAlertController(title: "Alert", message: "Company Name is Compulsory", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: Constants.alert, message: Constants.companyNameCompulsory, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: Constants.ok, style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
         
         }else

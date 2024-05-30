@@ -7,9 +7,14 @@
 
 import UIKit
 
-class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate {
+class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate, sendFilterDataDelegate {
+   
+    
    
     private var viewModel = EmployeeViewModel()
+    private var NewviewModel = CompanyViewModel1()
+
+    var company: Company?
 
     
 //    func userDidEnterInformation(info: String) {
@@ -24,7 +29,13 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     func sentEmpData(Name: String, Salary: String) {
         print("Name - \(Name) Sal - \(Salary)")
     }
-    
+    func sentFilterData(Val: Int, SalaryORName: String) {
+        print("Val - \(Val) Name - \(SalaryORName)")
+//        var salary = Int(SalaryORName)
+//        viewModel.fetchAllEmployees(filterVal: Val, filterValMin: salary ?? 0, filterValMax: 0, filterValForName: "")
+        viewModel.fetchAllEmployees(filterVal: Val, filterValForSort: SalaryORName)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         employeeTableView.dataSource = self
@@ -40,31 +51,55 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
             self?.employeeTableView.reloadData()
         }
         
-        viewModel.fetchAllEmployees()
+//        viewModel.fetchAllEmployees(filterVal: 0, filterValMaxMin: 0, filterValForName: "")
+//        viewModel.fetchAllEmployees(filterVal: 0, filterValMin: 0, filterValMax: 0, filterValForName: "")
+        viewModel.fetchAllEmployees(filterVal: 0, filterValForSort: "")
+
+
         
     }
     
+    
     @objc func addButtonTapped() {
         print("Tapped1")
-        if let customPopup = storyboard?.instantiateViewController(withIdentifier: "CustomPopupViewController") as? PopUpViewControllerForAddding {
+        if let customPopup = storyboard?.instantiateViewController(withIdentifier: Constants.companyCell) as? PopUpViewControllerForAddding {
                    customPopup.modalPresentationStyle = .overCurrentContext
                    customPopup.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                    navigationController?.present(customPopup, animated: true)
             customPopup.delegate = self
                }
     }
+    
+    @IBAction func btnShowFilterTapped(_ sender: Any) {
+        
+//       if let filterPopup = storyboard?.instantiateViewController(withIdentifier: "FilterPopupViewController") as? FilterViewController
+//        filterPopup?.modalPresentationStyle = .overCurrentContext
+//        filterPopup?.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//
+//       navigationController?.present(filterPopup, animated: true)
+//        filterPopup?.delegate = self
+            
+        if let filterPopup = storyboard?.instantiateViewController(withIdentifier: Constants.filterPopUp) as? FilterViewController {
+           filterPopup.modalPresentationStyle = .overCurrentContext
+           filterPopup.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+                       navigationController?.present(filterPopup, animated: true)
+           filterPopup.delegate = self
+                   }
+        
+    }
     @IBAction func btnAddEmpTapped(_ sender: Any) {
         
-        if ((txtEmpName.text?.isEmpty) != nil) || ((txtEmpSalary.text?.isEmpty) != nil) {
+        if ((txtEmpName.text!.isEmpty) || (txtEmpSalary.text!.isEmpty)) {
             
-            let alert = UIAlertController(title: "Alert", message: "Name & Salary is Compulsory", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: Constants.alert, message: Constants.nameANDSalaryCompulsory, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: Constants.ok, style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
         
         }
         else{
             let salVal = Double(txtEmpSalary.text ?? "11" )!
-            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
+//            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
+            self.NewviewModel.addEmployee(to: company!, name: txtEmpName.text ?? "11", Salary: txtEmpSalary.text ?? "10")
         }
             
     }
@@ -127,18 +162,24 @@ extension EmployeeViewController {
         }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "employeeCell", for: indexPath) as! EmployeeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.employeeCell, for: indexPath) as! EmployeeTableViewCell
         let cmp = viewModel.Employee(at: indexPath.row)
         cell.titleLabel.text = cmp.empName
         let salary = String(cmp.empSalary)
         print(cmp.empCompanyName!)
         cell.salaryLabel.text = salary
         
-//        let val = viewModel.GetMaxValuesEmployee(at: indexPath.row)
-//        print("Name - \(String(describing: val.empName)) Salary \(val.empSalary)")
+        cell.btnDelete.addTarget(self, action: #selector(deleteEmployee(sender:)), for: .touchUpInside)
+        cell.btnDelete.tag = indexPath.row
+
         return cell
     }
-
+    @objc func deleteEmployee(sender: UIButton){
+        let buttonTag = sender.tag
+        print(buttonTag)
+        let cmpToDelete = viewModel.Employee(at: sender.tag)
+        viewModel.deleteEmployee(cmp: cmpToDelete)
+    }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

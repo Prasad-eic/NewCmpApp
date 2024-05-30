@@ -37,47 +37,108 @@ class EmployeeViewModel {
                }
         
     }
+//    func song(title: String, releaseDate: String, singer: Company) -> Employee {
+//        let song = Song(context: persistentContainer.viewContext)
+//        song.title = title
+//        song.releaseDate = releaseDate
+//        singer.addToSongs(song)
+//        return song
+//    }
+//    func fetchAllEmployees(filterVal:Int,filterValMin:Int,filterValMax:Int , filterValForName:String) {
+    func fetchAllEmployees(filterVal:Int,filterValForSort:String) {
 
-    func fetchAllEmployees() {
         let request: NSFetchRequest<EmpEntity> = EmpEntity.fetchRequest()
-        do {
-            employee = try context.fetch(request)
-            didUpdateData?()
-        } catch {
-            print("Failed to fetch emp: \(error)")
-        }
         
-        let query:NSFetchRequest<EmpEntity> = EmpEntity.fetchRequest()
-               let key = "12000"
+        if filterVal == 0 {
+            do {
+                employee = try context.fetch(request)
+                didUpdateData?()
+            } catch {
+                print("Failed to fetch emp: \(error)")
+            }
+        }
+        if filterVal == 1 {
+            let key = filterValForSort
+            let predicate = NSPredicate(format: "empSalary > %@", key)
+            request.predicate = predicate
+            do {
+                employee = try context.fetch(request)
+                didUpdateData?()
+            } catch {
+                print("Failed to fetch emp: \(error)")
+            }
+        }
+        if filterVal == 2 {
+            let key = filterValForSort
+            let predicate = NSPredicate(format: "empSalary < %@", key)
+            request.predicate = predicate
+            do {
+                employee = try context.fetch(request)
+                didUpdateData?()
+            } catch {
+                print("Failed to fetch emp: \(error)")
+            }
+        }
+        if filterVal == 3 {
+            let key = filterValForSort
+            let predicate = NSPredicate(format: "empName = %@", key)
+            request.predicate = predicate
+            do {
+                employee = try context.fetch(request)
+                didUpdateData?()
+            } catch {
+                print("Failed to fetch emp: \(error)")
+            }
+        }
+        if filterVal == 4 {
 
-               let predicate = NSPredicate(format: "empSalary > %@", key)
-               query.predicate = predicate
-
-               do{
-                   maxPrdicate = try context.fetch(query)
-                   print("Max Count - \(maxPrdicate.count)")
-
-               }catch{
-                   print("error")
-               }
+            let key = filterValForSort
+            let predicate = NSPredicate(format: "empName CONTAINS %@", key)
+            request.predicate = predicate
+            do {
+                employee = try context.fetch(request)
+                didUpdateData?()
+            } catch {
+                print("Failed to fetch emp: \(error)")
+            }
+//            let sortDescriptor1 = NSSortDescriptor(key: "empCompanyName", ascending: true)
+////            let sortDescriptor2 = NSSortDescriptor(key: "age", ascending: false)
+//
+//            let sortDescriptors = [sortDescriptor1]
+//
+////            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "EntityName")
+////            fetchRequest.sortDescriptors = sortDescriptors
+//            request.sortDescriptors = sortDescriptors
+//
+////            let results = try managedObjectContext.fetch(fetchRequest)
+//            do {
+//                            employee = try context.fetch(request)
+//                            didUpdateData?()
+//                        } catch {
+//                            print("Failed to fetch emp: \(error)")
+//                        }
+        }
         getValueByName()
-
+//        fetchValueGroupBy()
+    }
+    func fetchValueGroupBy()
+    {
         
     }
-    func addEmployee(name: String,salary: Double,cmpName: String, Id: Int16) {
+        func addEmployee(name: String,salary: Double,cmpName: String, Id: Int16) {
         let newEmpployee = EmpEntity(context: context)
         newEmpployee.empName = name
         newEmpployee.empSalary = salary
         newEmpployee.empCompanyName = cmpName
         newEmpployee.id = Id
         saveContext()
-        fetchAllEmployees()
+            fetchAllEmployees(filterVal: 0, filterValForSort: "")
     }
 
     func deleteEmployee(cmp: EmpEntity) {
         context.delete(cmp)
         saveContext()
-        fetchAllEmployees()
+        fetchAllEmployees(filterVal: 0, filterValForSort: "")
     }
 
     func numberOfEmployees() -> Int {

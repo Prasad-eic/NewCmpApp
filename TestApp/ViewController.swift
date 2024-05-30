@@ -15,6 +15,8 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var companyTableView: UITableView!
     var companyValuesArray = [String]()
     private var viewModel = CompanyViewModel()
+    var company: CompanyEntity?
+    var selectedCompanyName:String = ""
  
     func userDidEnterInformation(info: String) {
         print("Entred String - \(info)")
@@ -23,6 +25,9 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     }
     func sentEmpData(Name: String, Salary: String) {
         print("Name - \(Name) & Salary - \(Salary)")
+        let salVal = Double(Salary) ?? 0.0
+        self.viewModel.addEmployee(name: Name, salary:salVal, cmpName: selectedCompanyName, Id: 111)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +84,7 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     @objc func BtnPlusTapped() {
         print("Tapped1")
       showPopUpforAdd(val: 0)
+        
     }
     
     func showPopUpforAdd(val: Int)
@@ -147,7 +153,9 @@ extension ViewController {
 
     }
     @objc private func addButtonTapped(sender:UIButton) {
-        print("Section - \(sender.tag)")
+        company = viewModel.company(at: sender.tag)
+        print("Section Val - \(company?.companyName ?? "--")")
+        selectedCompanyName = company?.companyName ?? "--"
         showPopUpforAdd(val: 1)
        }
 

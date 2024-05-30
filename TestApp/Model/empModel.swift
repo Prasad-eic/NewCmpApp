@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-@objc(Employee)
+//@objc(Employee)
 public class Employee: NSManagedObject {
 
 }
@@ -22,5 +22,9 @@ extension Employee {
     @NSManaged public var id: Int16
     @NSManaged public var empSalary: String?
     @NSManaged public var empCompanyName: String?
+    @NSManaged public var company: Company?
+}
+
+extension Employee : Identifiable {
 
 }
