@@ -95,8 +95,8 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         }
         else{
             let salVal = Double(txtEmpSalary.text ?? "11" )!
-//            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
-            self.NewviewModel.addEmployee(to: company!, name: txtEmpName.text ?? "11", Salary: txtEmpSalary.text ?? "10")
+            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
+//            self.NewviewModel.addEmployee(to: company? ?? "NA", name: txtEmpName.text ?? "11", Salary: txtEmpSalary.text ?? "10")
         }
             
     }
