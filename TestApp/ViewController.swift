@@ -16,6 +16,8 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     private var viewModel = CompanyViewModel()
     var company: CompanyEntity?
     var selectedCompanyName:String = ""
+    let userDefaults =  UserDefaults.standard
+
     var language = Constants.getlan ?? "--"
 
     @IBOutlet weak var lblTitle: UILabel!
@@ -33,6 +35,10 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.userDefaults.set("en", forKey: "AppLanguage")
+        self.userDefaults.synchronize()
+        print(Constants.getlan ?? "--")
         companyTableView.dataSource = self
         companyTableView.delegate = self
         
@@ -52,8 +58,8 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         }
         
         viewModel.fetchCompany()
-        print("Init Lang - \(language)")
 
+        language = (UserDefaults.standard.object(forKey: "AppLanguage") as? String ?? "QQQQ")
         lblTitle.text = "Find All Companies".localizeString(string:language )
         btnAddEmployee.setTitle("Add_Employee".localizeString(string: language), for: .normal)
 
@@ -62,20 +68,19 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         
         let alert = UIAlertController(title: "", message: "Change Language To", preferredStyle: .actionSheet)
         
-        let userDefaults =  UserDefaults.standard
             
             alert.addAction(UIAlertAction(title: "English", style: .default , handler:{ (UIAlertAction)in
                 print("User click English")
-                userDefaults.set("en", forKey: "AppLanguage")
-                userDefaults.synchronize()
+                self.userDefaults.set("en", forKey: "AppLanguage")
+                self.userDefaults.synchronize()
 
                 self.changeLanguage()
             }))
             
             alert.addAction(UIAlertAction(title: "Spanish", style: .default , handler:{ (UIAlertAction)in
                 print("User click Spanish")
-                userDefaults.set("es", forKey: "AppLanguage")
-                userDefaults.synchronize()
+                self.userDefaults.set("es", forKey: "AppLanguage")
+                self.userDefaults.synchronize()
                 self.changeLanguage()
             }))
             self.present(alert, animated: true, completion: {

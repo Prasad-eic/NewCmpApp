@@ -535,6 +535,16 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAq-PX-Krh">
+                                                <rect key="frame" x="10" y="492.66666666666663" width="90" height="35.333333333333371"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="CANCEL">
+                                                    <color key="baseForegroundColor" red="0.1176470588" green="0.59215686270000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onCancelButtonPressed:" destination="vaB-qW-1f1" eventType="touchUpInside" id="FfT-Gj-vkv"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -572,15 +582,18 @@
                                             <constraint firstItem="PsB-4t-Mw4" firstAttribute="top" secondItem="6H9-JX-Pwu" secondAttribute="bottom" constant="190" id="hdv-BB-A1Q"/>
                                             <constraint firstItem="Omc-Wi-0v2" firstAttribute="leading" secondItem="AsK-An-SUY" secondAttribute="leading" constant="10" id="hig-nT-Tnm"/>
                                             <constraint firstItem="1OH-w5-WyQ" firstAttribute="top" secondItem="nSU-Gt-yIp" secondAttribute="bottom" constant="21" id="iDw-D1-KLl"/>
+                                            <constraint firstItem="tAq-PX-Krh" firstAttribute="leading" secondItem="AsK-An-SUY" secondAttribute="leading" constant="10" id="igB-Cs-D0R"/>
                                             <constraint firstItem="edc-O3-bsU" firstAttribute="leading" secondItem="Omc-Wi-0v2" secondAttribute="trailing" constant="15" id="jX5-6l-Bne"/>
                                             <constraint firstItem="6xe-hn-OOV" firstAttribute="top" secondItem="AsK-An-SUY" secondAttribute="top" constant="15" id="k2U-sx-MQI"/>
                                             <constraint firstItem="6H9-JX-Pwu" firstAttribute="leading" secondItem="AsK-An-SUY" secondAttribute="leading" constant="2" id="kIu-9P-6vp"/>
+                                            <constraint firstAttribute="bottom" secondItem="tAq-PX-Krh" secondAttribute="bottom" constant="27" id="krB-0p-T8x"/>
                                             <constraint firstAttribute="trailing" secondItem="K7o-Zu-XoU" secondAttribute="trailing" constant="20" id="obg-e8-iJH"/>
                                             <constraint firstItem="K7o-Zu-XoU" firstAttribute="leading" secondItem="HKq-bF-mHk" secondAttribute="trailing" constant="20" id="plu-q1-fyy"/>
                                             <constraint firstItem="cyx-HK-gwL" firstAttribute="leading" secondItem="AsK-An-SUY" secondAttribute="leading" constant="10" id="q48-8d-OS3"/>
                                             <constraint firstItem="6xe-hn-OOV" firstAttribute="leading" secondItem="AsK-An-SUY" secondAttribute="leading" constant="10" id="sJ0-jp-dhR"/>
                                             <constraint firstItem="FOO-o5-EAI" firstAttribute="centerY" secondItem="ub7-6v-93S" secondAttribute="centerY" id="u5K-Ar-TOP"/>
                                             <constraint firstItem="nSU-Gt-yIp" firstAttribute="centerY" secondItem="SmD-hU-E8z" secondAttribute="centerY" id="vUt-Sw-3d1"/>
+                                            <constraint firstItem="tAq-PX-Krh" firstAttribute="top" secondItem="1OH-w5-WyQ" secondAttribute="bottom" constant="106.33" id="xwG-IK-nc8"/>
                                             <constraint firstAttribute="height" constant="555" id="yRe-nf-hBL"/>
                                         </constraints>
                                     </view>
@@ -598,6 +611,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="btnCancel" destination="tAq-PX-Krh" id="c72-Rh-Rh0"/>
                         <outlet property="btnNameContains" destination="4Zt-9E-3W6" id="TC9-li-RV1"/>
                         <outlet property="btnNameEquals" destination="0f4-HP-e2T" id="5QE-ei-YHJ"/>
                         <outlet property="btnNoFilter" destination="Omc-Wi-0v2" id="VY8-Qp-4EY"/>

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		39A5B3652C073A8E0061C38C /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A5B3642C073A8E0061C38C /* CompanyViewController.swift */; };
-		39A5B3672C073AAE0061C38C /* companyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A5B3662C073AAE0061C38C /* companyViewModel.swift */; };
+		39A5B3672C073AAE0061C38C /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A5B3662C073AAE0061C38C /* CompanyViewModel.swift */; };
 		39A5B3812C08871C0061C38C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A5B3802C08871C0061C38C /* Constant.swift */; };
 		39A5B38A2C09D2340061C38C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39A5B3882C09D2340061C38C /* Localizable.strings */; };
 		39AC56E22BFE2998003227B4 /* CoreDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39AC56E02BFE2998003227B4 /* CoreDB.xcdatamodeld */; };
@@ -51,7 +51,7 @@
 
 /* Begin PBXFileReference section */
 		39A5B3642C073A8E0061C38C /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
-		39A5B3662C073AAE0061C38C /* companyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companyViewModel.swift; sourceTree = "<group>"; };
+		39A5B3662C073AAE0061C38C /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewModel.swift; sourceTree = "<group>"; };
 		39A5B3802C08871C0061C38C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		39A5B3822C09D1C90061C38C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		39A5B3832C09D1C90061C38C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			children = (
 				39AC56EA2BFE2A69003227B4 /* CompanyVM.swift */,
 				39AC56F02BFE4EA1003227B4 /* EmpVM.swift */,
-				39A5B3662C073AAE0061C38C /* companyViewModel.swift */,
+				39A5B3662C073AAE0061C38C /* CompanyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -339,7 +339,7 @@
 				39AC56EF2BFE2B0D003227B4 /* PopUpViewControllerForAddding.swift in Sources */,
 				39AC56F52BFF40DB003227B4 /* EmployeeTableViewCell.swift in Sources */,
 				39DF24C42A5C20A30091747D /* AppDelegate.swift in Sources */,
-				39A5B3672C073AAE0061C38C /* companyViewModel.swift in Sources */,
+				39A5B3672C073AAE0061C38C /* CompanyViewModel.swift in Sources */,
 				39AC56F72BFF4D09003227B4 /* FilterViewController.swift in Sources */,
 				39AC56E22BFE2998003227B4 /* CoreDB.xcdatamodeld in Sources */,
 				39AC56F32BFF3A71003227B4 /* EmployeeViewController.swift in Sources */,

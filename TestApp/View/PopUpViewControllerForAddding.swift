@@ -43,6 +43,8 @@ class PopUpViewControllerForAddding: UIViewController {
         { viewForCompany.isHidden = true
             viewForEmployee.isHidden = false
         }
+        
+        language = (UserDefaults.standard.object(forKey: "AppLanguage") as? String ?? "QQQQ")
         addBtnEmp.setTitle("ADD".localizeString(string: language), for: .normal)
         cancelBtnEmp.setTitle("CANCEL".localizeString(string: language), for: .normal)
         addBtnCmp.setTitle("ADD".localizeString(string: language), for: .normal)

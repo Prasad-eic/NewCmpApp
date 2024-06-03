@@ -31,6 +31,8 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var lblNamePart_of_Name: UILabel!
 
     @IBOutlet weak var btnOK: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
+    
     
 
     
@@ -113,6 +115,9 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
         }
 
     }
+    @IBAction func onCancelButtonPressed(_ sender: UIButton) {
+           self.dismiss(animated: true, completion: nil)
+       }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
     }
