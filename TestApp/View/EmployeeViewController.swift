@@ -49,9 +49,10 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         viewModel.didUpdateData = { [weak self] in
             self?.employeeTableView.reloadData()
         }
-        
+                
+        language = (UserDefaults.standard.object(forKey: "AppLanguage") as? String ?? "QQQQ")
         lblTitle.text = "Find All Employees".localizeString(string:language )
-        btnAdd.titleLabel?.text = " ADD ".localizeString(string:language )
+        btnAdd.titleLabel?.text = "ADD".localizeString(string:language )
         btnCLearData.titleLabel?.text = "CLEAR DATA".localizeString(string:language )
         btnFilter.titleLabel?.text = "FILTERS".localizeString(string:language )
         txtEmpName.placeholder = "Name".localizeString(string: language)
@@ -128,7 +129,7 @@ extension EmployeeViewController {
         
         cell.lblNameText.text = "Name :-".localizeString(string:language )
         cell.lblSalaryText.text = "Salary :-".localizeString(string:language )
-        cell.btnDelete.titleLabel?.text = "BORRAR".localizeString(string: language)
+        cell.btnDelete.titleLabel?.text = "DELETE".localizeString(string: language)
 
 
         cell.btnDelete.addTarget(self, action: #selector(deleteEmployee(sender:)), for: .touchUpInside)
