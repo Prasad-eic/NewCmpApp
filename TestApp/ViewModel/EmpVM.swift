@@ -37,14 +37,6 @@ class EmployeeViewModel {
                }
         
     }
-//    func song(title: String, releaseDate: String, singer: Company) -> Employee {
-//        let song = Song(context: persistentContainer.viewContext)
-//        song.title = title
-//        song.releaseDate = releaseDate
-//        singer.addToSongs(song)
-//        return song
-//    }
-//    func fetchAllEmployees(filterVal:Int,filterValMin:Int,filterValMax:Int , filterValForName:String) {
     func fetchAllEmployees(filterVal:Int,filterValForSort:String) {
 
         let request: NSFetchRequest<EmpEntity> = EmpEntity.fetchRequest()
