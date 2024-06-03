@@ -11,6 +11,7 @@ protocol DataEnteredDelegate: AnyObject {
     func userDidEnterInformation(info: String)
     func sentEmpData(Name:String , Salary:String)
 }
+
 class PopUpViewControllerForAddding: UIViewController {
     weak var delegate: DataEnteredDelegate? = nil
 
@@ -18,9 +19,17 @@ class PopUpViewControllerForAddding: UIViewController {
     @IBOutlet weak var txtEmpName: UITextField!
     @IBOutlet weak var txtEmpSalary: UITextField!
     var IntvalForShowView = ""
-  
+    var language = Constants.getlan ?? "--"
     @IBOutlet weak var viewForEmployee: UIView!
     @IBOutlet weak var viewForCompany: UIView!
+    
+    @IBOutlet weak var addBtnEmp: UIButton!
+    @IBOutlet weak var cancelBtnEmp: UIButton!
+    @IBOutlet weak var addBtnCmp: UIButton!
+    @IBOutlet weak var cancelBtnCmp: UIButton!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +43,15 @@ class PopUpViewControllerForAddding: UIViewController {
         { viewForCompany.isHidden = true
             viewForEmployee.isHidden = false
         }
-        // Do any additional setup after loading the view.
+        addBtnEmp.setTitle("ADD".localizeString(string: language), for: .normal)
+        cancelBtnEmp.setTitle("CANCEL".localizeString(string: language), for: .normal)
+        addBtnCmp.setTitle("ADD".localizeString(string: language), for: .normal)
+        cancelBtnCmp.setTitle("CANCEL".localizeString(string: language), for: .normal)
+        
+        txtCompanyName.placeholder = "Company Name - ".localizeString(string: language)
+        txtEmpName.placeholder = "Name".localizeString(string: language)
+        txtEmpSalary.placeholder = "Salary".localizeString(string: language)
+
     }
     
     @IBAction func btnAddTapped(_ sender: Any) {

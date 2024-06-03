@@ -10,14 +10,16 @@ import CoreData
 
 class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate {
 
-  
-    
+    @IBOutlet weak var btnAddEmployee: UIButton!
     @IBOutlet weak var companyTableView: UITableView!
     var companyValuesArray = [String]()
     private var viewModel = CompanyViewModel()
     var company: CompanyEntity?
     var selectedCompanyName:String = ""
- 
+    var language = Constants.getlan ?? "--"
+
+    @IBOutlet weak var lblTitle: UILabel!
+    
     func userDidEnterInformation(info: String) {
         print("Entred String - \(info)")
         self.viewModel.addCompany(name: info, Id: 12)
@@ -37,16 +39,11 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         companyTableView.sectionHeaderHeight = UITableView.automaticDimension
         companyTableView.estimatedSectionHeaderHeight = 80
 
-
-//        let leftNaviButton = UIBarButtonItem(title: "Button", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Tapped1))
         let leftNaviButton = UIBarButtonItem(image: UIImage(named: "more")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnMoreTapped))
            self.navigationItem.leftBarButtonItem = leftNaviButton
         
         let rightNaviButton = UIBarButtonItem(image: UIImage(systemName: "plus")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnPlusTapped))
         self.navigationItem.rightBarButtonItem = rightNaviButton
-        
-        
-        
         
         navigationController?.navigationBar.backgroundColor = .green
         
@@ -55,28 +52,32 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         }
         
         viewModel.fetchCompany()
-        
-//        for i in 0...viewModel.numberOfComapnies()-1
-//        {
-//            let cmp = viewModel.company(at: i)
-//            companyValuesArray.append(cmp.companyName ?? "")
-//        }
-//        print("Array - \(companyValuesArray)")
+        print("Init Lang - \(language)")
 
-        
+        lblTitle.text = "Find All Companies".localizeString(string:language )
+        btnAddEmployee.setTitle("Add_Employee".localizeString(string: language), for: .normal)
+
     }
     @objc func BtnMoreTapped() {
         
         let alert = UIAlertController(title: "", message: "Change Language To", preferredStyle: .actionSheet)
+        
+        let userDefaults =  UserDefaults.standard
             
             alert.addAction(UIAlertAction(title: "English", style: .default , handler:{ (UIAlertAction)in
                 print("User click English")
+                userDefaults.set("en", forKey: "AppLanguage")
+                userDefaults.synchronize()
+
+                self.changeLanguage()
             }))
             
             alert.addAction(UIAlertAction(title: "Spanish", style: .default , handler:{ (UIAlertAction)in
                 print("User click Spanish")
+                userDefaults.set("es", forKey: "AppLanguage")
+                userDefaults.synchronize()
+                self.changeLanguage()
             }))
-
             self.present(alert, animated: true, completion: {
                 print("completion block")
             })
@@ -84,7 +85,6 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     @objc func BtnPlusTapped() {
         print("Tapped1")
       showPopUpforAdd(val: 0)
-        
     }
     
     func showPopUpforAdd(val: Int)
@@ -100,22 +100,16 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
                
     }
     @IBAction func btnAddCompanyTapped(_ sender: Any) {
-        
-//                let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
-//        
-//                alert.addTextField { (textField) in
-//                    textField.text = "Some default text"
-//                }
-//        
-//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-//                    let textField = alert?.textFields![0]
-//                    print("Text field: \(String(describing: textField!.text))")
-//                    var nameVal  = textField?.text
-//                    self.viewModel.addCompany(name: nameVal ?? "NA", Id: 1)
-//        
-//                }))
-//                self.present(alert, animated: true, completion: nil)
             
+    }
+    func changeLanguage() {
+        language = (UserDefaults.standard.object(forKey: "AppLanguage") as? String ?? "QQQQ")
+        print("New Lang - \(Constants.getlan ?? "NNNN")")
+        print("changeLanguage - \(language)")
+        lblTitle.text = "Find All Companies".localizeString(string:language )
+        btnAddEmployee.setTitle("Add_Employee".localizeString(string: language), for: .normal)
+        companyTableView.reloadData()
+
     }
 }
 
@@ -132,9 +126,9 @@ extension ViewController {
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let view = UIView(frame: CGRect(x:0, y:0, width:150, height:18))
-        let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width-200, height:18))
-         let button = UIButton (frame: CGRect(x: tableView.frame.width-150, y: 5, width: 50, height: 20))
-         button.setTitle(" ADD ", for: .normal)
+        let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width-150, height:18))
+         let button = UIButton (frame: CGRect(x: tableView.frame.width-150, y: 5, width: 120, height: 20))
+         button.setTitle("ADD".localizeString(string:language ), for: .normal)
          button.setTitleColor(.blue, for: .normal)
          button.backgroundColor = UIColor.gray
          button.layer.cornerRadius = 5
@@ -144,7 +138,9 @@ extension ViewController {
          button.backgroundColor = UIColor.green
         label.font = UIFont.systemFont(ofSize: 14)
          let cmp = viewModel.company(at: section)
-         label.text = "Company Name - \(cmp.companyName ?? "")";
+         print("Lang - \(language)")
+         let cmpName = "Company Name -".localizeString(string: language)
+         label.text = "\(cmpName)\(cmp.companyName ?? "")";
         view.addSubview(label);
         view.addSubview(button)
         view.backgroundColor = UIColor.gray;
@@ -162,12 +158,6 @@ extension ViewController {
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
     }
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        
-//        let cmp = viewModel.company(at: section)
-////        print("Section Val - \(String(describing: cmp.companyName))")
-//        return "Section \(cmp.companyName ?? "NA")"
-//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           // Do here
         let cmp = viewModel.company(at: indexPath.row)
@@ -193,4 +183,5 @@ extension ViewController {
         }
     }
 }
+
 

@@ -1,0 +1,138 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "0f4-HP-e2T"; */
+"0f4-HP-e2T.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Salary is more than"; ObjectID = "1OH-w5-WyQ"; */
+"1OH-w5-WyQ.text" = "Salary is more than";
+
+/* Class = "UIButton"; configuration.title = "Add Employee"; ObjectID = "1ZQ-fc-mc3"; */
+"1ZQ-fc-mc3.configuration.title" = "Add Employee";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "1ZQ-fc-mc3"; */
+"1ZQ-fc-mc3.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4Zt-9E-3W6"; */
+"4Zt-9E-3W6.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Name or Part of Name"; ObjectID = "6xe-hn-OOV"; */
+"6xe-hn-OOV.text" = "Name or Part of Name";
+
+/* Class = "UITextField"; placeholder = "Company Name"; ObjectID = "7uG-6v-Fxz"; */
+"7uG-6v-Fxz.placeholder" = "Company Name";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "Bhy-7M-vkY"; */
+"Bhy-7M-vkY.text" = "-";
+
+/* Class = "UITextField"; placeholder = "Salary"; ObjectID = "C5f-Pb-cFL"; */
+"C5f-Pb-cFL.placeholder" = "Salary";
+
+/* Class = "UIButton"; configuration.title = "CLEAR DATA"; ObjectID = "EbY-D2-hT3"; */
+"EbY-D2-hT3.configuration.title" = "CLEAR DATA";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "EbY-D2-hT3"; */
+"EbY-D2-hT3.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "MAX Salary"; ObjectID = "HKq-bF-mHk"; */
+"HKq-bF-mHk.text" = "MAX Salary";
+
+/* Class = "UILabel"; text = "Name Equals to"; ObjectID = "OYE-Gr-e0E"; */
+"OYE-Gr-e0E.text" = "Name Equals to";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Omc-Wi-0v2"; */
+"Omc-Wi-0v2.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "OK"; ObjectID = "PsB-4t-Mw4"; */
+"PsB-4t-Mw4.configuration.title" = "OK";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PsB-4t-Mw4"; */
+"PsB-4t-Mw4.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Salary :-"; ObjectID = "QYf-S2-ERO"; */
+"QYf-S2-ERO.text" = "Salary :-";
+
+/* Class = "UIButton"; configuration.title = "CANCEL"; ObjectID = "QgN-cb-nO2"; */
+"QgN-cb-nO2.configuration.title" = "CANCEL";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "QgN-cb-nO2"; */
+"QgN-cb-nO2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Name :-"; ObjectID = "RRG-i2-IcI"; */
+"RRG-i2-IcI.text" = "Name :-";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SmD-hU-E8z"; */
+"SmD-hU-E8z.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "cT2-S0-ptw"; */
+"cT2-S0-ptw.placeholder" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cyx-HK-gwL"; */
+"cyx-HK-gwL.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "CANCEL"; ObjectID = "dCx-Ru-H3I"; */
+"dCx-Ru-H3I.configuration.title" = "CANCEL";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dCx-Ru-H3I"; */
+"dCx-Ru-H3I.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "No Filter"; ObjectID = "edc-O3-bsU"; */
+"edc-O3-bsU.text" = "No Filter";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "el5-D4-Yt0"; */
+"el5-D4-Yt0.text" = "-";
+
+/* Class = "UIButton"; configuration.title = "ADD"; ObjectID = "f7u-Kb-nrd"; */
+"f7u-Kb-nrd.configuration.title" = "ADD";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "f7u-Kb-nrd"; */
+"f7u-Kb-nrd.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "fj5-6R-cBn"; */
+"fj5-6R-cBn.placeholder" = "Name";
+
+/* Class = "UIButton"; configuration.title = "ADD"; ObjectID = "gnk-rK-yJR"; */
+"gnk-rK-yJR.configuration.title" = "ADD";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gnk-rK-yJR"; */
+"gnk-rK-yJR.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "FILTERS"; ObjectID = "hXO-hH-xSk"; */
+"hXO-hH-xSk.configuration.title" = "FILTERS";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hXO-hH-xSk"; */
+"hXO-hH-xSk.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Name Contains"; ObjectID = "klo-V1-doz"; */
+"klo-V1-doz.text" = "Name Contains";
+
+/* Class = "UILabel"; text = "Salary is less than"; ObjectID = "nSU-Gt-yIp"; */
+"nSU-Gt-yIp.text" = "Salary is less than";
+
+/* Class = "UIButton"; configuration.title = "Button"; ObjectID = "pqV-kZ-dC0"; */
+"pqV-kZ-dC0.configuration.title" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pqV-kZ-dC0"; */
+"pqV-kZ-dC0.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Find All Employees "; ObjectID = "trh-gD-KxQ"; */
+"trh-gD-KxQ.text" = "Find All Employees ";
+
+/* Class = "UILabel"; text = "MIN Salary"; ObjectID = "ub7-6v-93S"; */
+"ub7-6v-93S.text" = "MIN Salary";
+
+/* Class = "UILabel"; text = "Find All Companies "; ObjectID = "yFs-rJ-XW4"; */
+"yFs-rJ-XW4.text" = "Find All Companies ";
+
+/* Class = "UIButton"; configuration.title = "ADD"; ObjectID = "yWP-BI-lLY"; */
+"yWP-BI-lLY.configuration.title" = "ADD";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "yWP-BI-lLY"; */
+"yWP-BI-lLY.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Salary"; ObjectID = "zak-9A-O37"; */
+"zak-9A-O37.placeholder" = "Salary";
+
+/* Class = "UIButton"; configuration.title = "DELETE"; ObjectID = "zqF-AH-Cap"; */
+"zqF-AH-Cap.configuration.title" = "DELETE";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zqF-AH-Cap"; */
+"zqF-AH-Cap.normalTitle" = "Button";

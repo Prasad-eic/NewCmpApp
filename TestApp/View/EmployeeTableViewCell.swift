@@ -11,7 +11,8 @@ class EmployeeTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var salaryLabel: UILabel!
     @IBOutlet weak var btnDelete: UIButton!
-
+    @IBOutlet weak var lblNameText: UILabel!
+    @IBOutlet weak var lblSalaryText: UILabel!
 
 
     override func awakeFromNib() {

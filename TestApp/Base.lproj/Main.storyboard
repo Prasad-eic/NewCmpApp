@@ -67,11 +67,14 @@
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZQ-fc-mc3">
                                         <rect key="frame" x="50" y="773" width="293" height="35"/>
+                                        <color key="backgroundColor" red="0.11764705882352941" green="0.59215686274509804" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="UPZ-Uz-P5c"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add Employee"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Add Employee">
+                                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="btnAddCompanyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ooK-tP-hKu"/>
                                             <segue destination="Q8P-zJ-sOj" kind="show" id="zkT-2Q-pnU"/>
@@ -99,7 +102,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="FPp-l9-Uwd"/>
                     <connections>
+                        <outlet property="btnAddEmployee" destination="1ZQ-fc-mc3" id="FNA-Vh-18w"/>
                         <outlet property="companyTableView" destination="d06-hu-vA1" id="jkZ-gZ-ExS"/>
+                        <outlet property="lblTitle" destination="yFs-rJ-XW4" id="5Uj-Fe-tNN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -305,6 +310,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addBtnCmp" destination="gnk-rK-yJR" id="H5G-fa-Fgv"/>
+                        <outlet property="addBtnEmp" destination="yWP-BI-lLY" id="mgn-lE-nSf"/>
+                        <outlet property="cancelBtnCmp" destination="QgN-cb-nO2" id="Bkg-vi-ZHH"/>
+                        <outlet property="cancelBtnEmp" destination="dCx-Ru-H3I" id="UMP-M0-T8O"/>
                         <outlet property="txtCompanyName" destination="7uG-6v-Fxz" id="F90-n2-2t7"/>
                         <outlet property="txtEmpName" destination="cT2-S0-ptw" id="uYm-2j-TXv"/>
                         <outlet property="txtEmpSalary" destination="C5f-Pb-cFL" id="QTN-PP-nzi"/>
@@ -475,10 +484,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsB-4t-Mw4">
-                                                <rect key="frame" x="268" y="493" width="60" height="35"/>
+                                                <rect key="frame" x="280.33333333333331" y="493" width="47.666666666666686" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="gxI-ra-EqV"/>
-                                                    <constraint firstAttribute="width" constant="60" id="mwf-F6-ljc"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="OK">
@@ -593,10 +601,15 @@
                         <outlet property="btnNameContains" destination="4Zt-9E-3W6" id="TC9-li-RV1"/>
                         <outlet property="btnNameEquals" destination="0f4-HP-e2T" id="5QE-ei-YHJ"/>
                         <outlet property="btnNoFilter" destination="Omc-Wi-0v2" id="VY8-Qp-4EY"/>
+                        <outlet property="btnOK" destination="PsB-4t-Mw4" id="f6g-9a-dap"/>
                         <outlet property="btnSalaryMax" destination="cyx-HK-gwL" id="unr-fZ-LUf"/>
                         <outlet property="btnSalaryMin" destination="SmD-hU-E8z" id="f2X-XT-eTs"/>
+                        <outlet property="lblMaxSalary" destination="HKq-bF-mHk" id="EKL-bd-9rd"/>
+                        <outlet property="lblMinSalary" destination="ub7-6v-93S" id="xBp-kI-NJF"/>
                         <outlet property="lblNameContains" destination="klo-V1-doz" id="P71-d8-wxb"/>
                         <outlet property="lblNameEqualTo" destination="OYE-Gr-e0E" id="0YN-Eg-2aB"/>
+                        <outlet property="lblNamePart_of_Name" destination="6xe-hn-OOV" id="2tB-Va-gbu"/>
+                        <outlet property="lblNofilter" destination="edc-O3-bsU" id="aQC-NA-Ybi"/>
                         <outlet property="lblSalaryLessThan" destination="nSU-Gt-yIp" id="sZG-pf-lXJ"/>
                         <outlet property="lblSalaryMoreThan" destination="1OH-w5-WyQ" id="qTg-c6-act"/>
                         <outlet property="txtMaxSalary" destination="K7o-Zu-XoU" id="OdI-Fx-Mvt"/>
@@ -643,7 +656,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7u-Kb-nrd">
-                                <rect key="frame" x="285" y="708" width="78" height="35"/>
+                                <rect key="frame" x="304" y="708" width="59" height="35"/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.59215686270000001" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="NcV-59-dtc"/>
@@ -681,17 +694,16 @@
                                                     <rect key="frame" x="0.0" y="10" width="373" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name :-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRG-i2-IcI">
-                                                            <rect key="frame" x="10" y="5" width="65" height="21"/>
+                                                            <rect key="frame" x="10.000000000000004" y="5" width="61.333333333333343" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Do2-uh-a10"/>
-                                                                <constraint firstAttribute="width" constant="65" id="KnU-fD-wlo"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el5-D4-Yt0">
-                                                            <rect key="frame" x="95" y="5" width="7.6666666666666714" height="21"/>
+                                                            <rect key="frame" x="91.333333333333329" y="5" width="7.6666666666666714" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="cx7-ty-2Gi"/>
                                                             </constraints>
@@ -700,7 +712,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhy-7M-vkY">
-                                                            <rect key="frame" x="95" y="31" width="7.6666666666666714" height="21"/>
+                                                            <rect key="frame" x="93.666666666666671" y="31" width="7.6666666666666714" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="fN4-JF-JVv"/>
                                                             </constraints>
@@ -709,9 +721,8 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary :-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYf-S2-ERO">
-                                                            <rect key="frame" x="10" y="31" width="65" height="21"/>
+                                                            <rect key="frame" x="9.9999999999999964" y="31" width="63.666666666666657" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="65" id="Rxr-XA-dXj"/>
                                                                 <constraint firstAttribute="height" constant="21" id="TZy-ue-H66"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -719,10 +730,9 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqF-AH-Cap">
-                                                            <rect key="frame" x="293" y="10" width="70" height="29"/>
+                                                            <rect key="frame" x="294.33333333333331" y="10" width="68.666666666666686" height="29"/>
                                                             <color key="backgroundColor" red="0.1176470588" green="0.59215686270000001" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="70" id="Wd2-jq-wef"/>
                                                                 <constraint firstAttribute="height" constant="29" id="nYx-eF-zBD"/>
                                                             </constraints>
                                                             <state key="normal" title="Button"/>
@@ -756,6 +766,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnDelete" destination="zqF-AH-Cap" id="evb-DJ-adw"/>
+                                            <outlet property="lblNameText" destination="RRG-i2-IcI" id="4uL-Ie-fbB"/>
+                                            <outlet property="lblSalaryText" destination="QYf-S2-ERO" id="EhL-vK-cLG"/>
                                             <outlet property="salaryLabel" destination="Bhy-7M-vkY" id="yAx-Dk-1fp"/>
                                             <outlet property="titleLabel" destination="el5-D4-Yt0" id="fZT-6a-zUQ"/>
                                         </connections>
@@ -791,7 +803,6 @@
                             <constraint firstItem="kKx-mI-wvs" firstAttribute="trailing" secondItem="nkx-Gr-gpi" secondAttribute="trailing" constant="10" id="3oS-2d-x5I"/>
                             <constraint firstItem="trh-gD-KxQ" firstAttribute="top" secondItem="kKx-mI-wvs" secondAttribute="top" constant="10" id="6Ek-JC-xzZ"/>
                             <constraint firstItem="fj5-6R-cBn" firstAttribute="top" secondItem="nkx-Gr-gpi" secondAttribute="bottom" constant="10" id="6x0-dd-luy"/>
-                            <constraint firstItem="f7u-Kb-nrd" firstAttribute="leading" secondItem="zak-9A-O37" secondAttribute="trailing" constant="40" id="LEG-oC-PCK"/>
                             <constraint firstItem="kKx-mI-wvs" firstAttribute="trailing" secondItem="hXO-hH-xSk" secondAttribute="trailing" constant="30" id="NJk-9e-1zO"/>
                             <constraint firstItem="trh-gD-KxQ" firstAttribute="leading" secondItem="kKx-mI-wvs" secondAttribute="leading" constant="30" id="RLo-On-avC"/>
                             <constraint firstItem="kKx-mI-wvs" firstAttribute="bottom" secondItem="EbY-D2-hT3" secondAttribute="bottom" constant="20" id="Rv0-TM-mc0"/>
@@ -811,7 +822,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZJ0-ut-NO7"/>
                     <connections>
+                        <outlet property="btnAdd" destination="f7u-Kb-nrd" id="0GU-2r-fAS"/>
+                        <outlet property="btnCLearData" destination="EbY-D2-hT3" id="va9-A7-8b2"/>
+                        <outlet property="btnFilter" destination="hXO-hH-xSk" id="1Gw-fR-4l9"/>
                         <outlet property="employeeTableView" destination="nkx-Gr-gpi" id="ain-4D-sXm"/>
+                        <outlet property="lblTitle" destination="trh-gD-KxQ" id="xSe-ts-RLa"/>
                         <outlet property="txtEmpName" destination="fj5-6R-cBn" id="DWl-Ym-95Y"/>
                         <outlet property="txtEmpSalary" destination="zak-9A-O37" id="eD0-rB-o3h"/>
                     </connections>
@@ -849,6 +864,9 @@
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

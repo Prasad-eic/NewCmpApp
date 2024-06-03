@@ -101,22 +101,6 @@ class EmployeeViewModel {
             } catch {
                 print("Failed to fetch emp: \(error)")
             }
-//            let sortDescriptor1 = NSSortDescriptor(key: "empCompanyName", ascending: true)
-////            let sortDescriptor2 = NSSortDescriptor(key: "age", ascending: false)
-//
-//            let sortDescriptors = [sortDescriptor1]
-//
-////            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "EntityName")
-////            fetchRequest.sortDescriptors = sortDescriptors
-//            request.sortDescriptors = sortDescriptors
-//
-////            let results = try managedObjectContext.fetch(fetchRequest)
-//            do {
-//                            employee = try context.fetch(request)
-//                            didUpdateData?()
-//                        } catch {
-//                            print("Failed to fetch emp: \(error)")
-//                        }
         }
         getValueByName()
 //        fetchValueGroupBy()

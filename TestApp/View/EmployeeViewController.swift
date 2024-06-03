@@ -13,18 +13,19 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
    
     private var viewModel = EmployeeViewModel()
     private var NewviewModel = CompanyViewModel1()
+    var language = Constants.getlan ?? "--"
 
     var company: Company?
-
-    
-//    func userDidEnterInformation(info: String) {
-//        print("Entred String - \(info)")
-//        self.viewModel.addEmployee(name: info, salary: 1212, cmpName: "123", Id: 122)
-//
-//    }
     @IBOutlet weak var txtEmpName: UITextField!
     @IBOutlet weak var txtEmpSalary: UITextField!
     @IBOutlet weak var employeeTableView: UITableView!
+    @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet weak var btnCLearData: UIButton!
+    @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
+
+
+
     
     func sentEmpData(Name: String, Salary: String) {
         print("Name - \(Name) Sal - \(Salary)")
@@ -43,16 +44,19 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         
         employeeTableView.sectionHeaderHeight = UITableView.automaticDimension
         employeeTableView.estimatedSectionHeaderHeight = 80
-
-
         navigationController?.navigationBar.backgroundColor = .green
         
         viewModel.didUpdateData = { [weak self] in
             self?.employeeTableView.reloadData()
         }
         
-//        viewModel.fetchAllEmployees(filterVal: 0, filterValMaxMin: 0, filterValForName: "")
-//        viewModel.fetchAllEmployees(filterVal: 0, filterValMin: 0, filterValMax: 0, filterValForName: "")
+        lblTitle.text = "Find All Employees".localizeString(string:language )
+        btnAdd.titleLabel?.text = " ADD ".localizeString(string:language )
+        btnCLearData.titleLabel?.text = "CLEAR DATA".localizeString(string:language )
+        btnFilter.titleLabel?.text = "FILTERS".localizeString(string:language )
+        txtEmpName.placeholder = "Name".localizeString(string: language)
+        txtEmpSalary.placeholder = "Salary".localizeString(string: language)
+
         viewModel.fetchAllEmployees(filterVal: 0, filterValForSort: "")
 
 
@@ -71,13 +75,6 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     }
     
     @IBAction func btnShowFilterTapped(_ sender: Any) {
-        
-//       if let filterPopup = storyboard?.instantiateViewController(withIdentifier: "FilterPopupViewController") as? FilterViewController
-//        filterPopup?.modalPresentationStyle = .overCurrentContext
-//        filterPopup?.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-//
-//       navigationController?.present(filterPopup, animated: true)
-//        filterPopup?.delegate = self
             
         if let filterPopup = storyboard?.instantiateViewController(withIdentifier: Constants.filterPopUp) as? FilterViewController {
            filterPopup.modalPresentationStyle = .overCurrentContext
@@ -115,46 +112,6 @@ extension EmployeeViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0;//Choose your custom row height
     }
-//    func numberOfSections(in tableView: UITableView) -> Int {
-////        return arraySection.count
-//    return viewModel.numberOfEmployees()
-//
-//    }
-//     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//
-//        let view = UIView(frame: CGRect(x:0, y:0, width:150, height:18))
-//        let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width-200, height:18))
-//         let button = UIButton (frame: CGRect(x: tableView.frame.width-150, y: 5, width: 50, height: 20))
-//         button.setTitle(" ADD ", for: .normal)
-//         button.setTitleColor(.blue, for: .normal)
-//         button.backgroundColor = UIColor.gray
-//         button.layer.cornerRadius = 5
-////         button.frame = CGRect(x: 15, y: -50, width: 300, height: 500)
-//         button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
-//         button.tag = section
-//         
-//         button.backgroundColor = UIColor.green
-//        label.font = UIFont.systemFont(ofSize: 14)
-//        label.text = "This is a test";
-//        view.addSubview(label);
-//        view.addSubview(button)
-//        view.backgroundColor = UIColor.gray;
-//        return view
-//
-//    }
-//    @objc private func addButtonTapped(sender:UIButton) {
-//        print("Section - \(sender.tag)")
-//       }
-//
-//     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 40.0
-//    }
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        let cmp = viewModel.company(at: section)
-////        print("Section Val - \(String(describing: cmp.companyName))")
-//        return "Section \(cmp.companyName ?? "NA")"
-//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           // Do here
         let cmp = viewModel.Employee(at: indexPath.row)
@@ -169,6 +126,11 @@ extension EmployeeViewController {
         print(cmp.empCompanyName!)
         cell.salaryLabel.text = salary
         
+        cell.lblNameText.text = "Name :-".localizeString(string:language )
+        cell.lblSalaryText.text = "Salary :-".localizeString(string:language )
+        cell.btnDelete.titleLabel?.text = "BORRAR".localizeString(string: language)
+
+
         cell.btnDelete.addTarget(self, action: #selector(deleteEmployee(sender:)), for: .touchUpInside)
         cell.btnDelete.tag = indexPath.row
 

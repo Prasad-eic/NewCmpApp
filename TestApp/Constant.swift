@@ -21,6 +21,14 @@ struct Constants{
     static let salaryIsMore =  "Salary is More than -"
     static let salaryIsLess = "Salary is less than -"
     static let salary_Name_Req = "Max Salary Or Min Salary Or Name Required"
-
-
+    
+    static var getlan = UserDefaults.standard.object(forKey: "AppLanguage") as? String
+    
+}
+extension String {
+    func localizeString(string: String)-> String {
+        guard let path = Bundle.main.path(forResource: string, ofType: "lproj") else { return "" }
+        let bundle = Bundle(path: path)
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }
 }

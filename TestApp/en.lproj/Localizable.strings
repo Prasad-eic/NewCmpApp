@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  TestApp
+
+  Created by Prasad Lokhande on 31/05/24.
+  
+*/
+"ADD" = " ADD ";
+"Company Name -" = "Company Name -";
+
+"No Filter" = "No Filter";
+"Name Equals to" = "Name Equals to";
+"Name Contains" = "Name Contains";
+"Salary is less than" = "Salary is less than";
+"Salary is more than" = "Salary is more than";
+"Name or Part of Name" = "Name or Part of Name";
+"MIN Salary" = "MIN Salary";
+"MAX Salary" = "MAX Salary";
+"OK" = "OK";
+"Name or Part of Name" = "Name or Part of Name";
+"No Filter" = "No Filter";
+
+"Find All Employees" = "Find All Employees";
+"Name :-" = "Name :- ";
+"Salary :-" = "Salary :- ";
+"CLEAR DATA" = "CLEAR DATA";
+"FILTERS" = "FILTERS";
+"DELETE" = "DELETE";
+"Name" = "Name";
+"Salary" = "Salary";
+"Company Name - " = "Company Name - ";
+"Add_Employee" = "Add Employee";
+"Find All Companies" = "Find All Companies";
+"CANCEL" = "CANCEL";

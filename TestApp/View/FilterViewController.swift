@@ -25,9 +25,18 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var lblNameContains: UILabel!
     @IBOutlet weak var lblSalaryLessThan: UILabel!
     @IBOutlet weak var lblSalaryMoreThan: UILabel!
+    @IBOutlet weak var lblNofilter: UILabel!
+    @IBOutlet weak var lblMinSalary: UILabel!
+    @IBOutlet weak var lblMaxSalary: UILabel!
+    @IBOutlet weak var lblNamePart_of_Name: UILabel!
+
+    @IBOutlet weak var btnOK: UIButton!
+    
+
+    
     
     weak var delegate: sendFilterDataDelegate? = nil
-
+    var language = Constants.getlan ?? "--"
     
     var buttons: [UIButton] = []
     var selectedFilterVal:Int? = 100
@@ -43,7 +52,18 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
         txtNameSalary.addTarget(self, action: #selector(FilterViewController.textFieldDidChange(_:)), for: .editingChanged)
         txtMaxSalary.addTarget(self, action: #selector(FilterViewController.textFieldDidChange(_:)), for: .editingChanged)
         txtMinSalary.addTarget(self, action: #selector(FilterViewController.textFieldDidChange(_:)), for: .editingChanged)
+        print(Constants.getlan ?? "")
 
+        lblNameContains.text = "Name Contains".localizeString(string:language )
+        lblNameEqualTo.text = "Name Equals to".localizeString(string: language)
+        lblSalaryLessThan.text = "Salary is less than".localizeString(string: language)
+        lblSalaryMoreThan.text = "Salary is more than".localizeString(string: language)
+        
+        lblNofilter.text = "No Filter".localizeString(string: language)
+        lblMinSalary.text = "Salary is more than".localizeString(string: language)
+        lblMaxSalary.text = "Salary is more than".localizeString(string: language)
+        lblNamePart_of_Name.text = "Name or Part of Name".localizeString(string: language)
+        btnOK.titleLabel?.text = "OK".localizeString(string: language)
 
     }
     private func setupButtons() {
@@ -58,11 +78,6 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
         selectedFilterVal = 0
     }
     @IBAction func btnSalaryMinTapped(_ sender: Any) {
-//        if txtMaxSalary.text!.isEmpty {
-//            
-//            showAlertView(msgString: "Please add Salary")
-//            return
-//        }
         selectedFilterVal = 2
 
     }
