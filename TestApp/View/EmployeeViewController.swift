@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate, sendFilterDataDelegate {
+class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate, sendFilterDataDelegate ,UITextFieldDelegate{
    
     
    
@@ -23,7 +23,7 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     @IBOutlet weak var btnCLearData: UIButton!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
-
+    var filterVal:Int?
 
 
     
@@ -32,6 +32,7 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     }
     func sentFilterData(Val: Int, SalaryORName: String) {
         print("Val - \(Val) Name - \(SalaryORName)")
+        filterVal = Val
 //        var salary = Int(SalaryORName)
 //        viewModel.fetchAllEmployees(filterVal: Val, filterValMin: salary ?? 0, filterValMax: 0, filterValForName: "")
         viewModel.fetchAllEmployees(filterVal: Val, filterValForSort: SalaryORName)
@@ -41,7 +42,7 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         super.viewDidLoad()
         employeeTableView.dataSource = self
         employeeTableView.delegate = self
-        
+        txtEmpSalary.delegate = self
         employeeTableView.sectionHeaderHeight = UITableView.automaticDimension
         employeeTableView.estimatedSectionHeaderHeight = 80
         navigationController?.navigationBar.backgroundColor = .green
@@ -59,12 +60,15 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         txtEmpSalary.placeholder = "Salary".localizeString(string: language)
 
         viewModel.fetchAllEmployees(filterVal: 0, filterValForSort: "")
-
-
+//        textField(txtEmpSalary, shouldChangeCharactersIn: <#T##NSRange#>, replacementString: <#T##String#>)
         
     }
-    
-    
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
     @objc func addButtonTapped() {
         print("Tapped1")
         if let customPopup = storyboard?.instantiateViewController(withIdentifier: Constants.companyCell) as? PopUpViewControllerForAddding {
@@ -74,13 +78,17 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
             customPopup.delegate = self
                }
     }
-    
+    @IBAction func btnClearDataTapped(_ sender: Any) {
+        viewModel.fetchAllEmployees(filterVal: 0, filterValForSort: "")
+    }
+
     @IBAction func btnShowFilterTapped(_ sender: Any) {
             
         if let filterPopup = storyboard?.instantiateViewController(withIdentifier: Constants.filterPopUp) as? FilterViewController {
            filterPopup.modalPresentationStyle = .overCurrentContext
            filterPopup.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                        navigationController?.present(filterPopup, animated: true)
+            filterPopup.passedFilterVal = filterVal
            filterPopup.delegate = self
                    }
         
@@ -98,6 +106,9 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
             let salVal = Double(txtEmpSalary.text ?? "11" )!
             self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
 //            self.NewviewModel.addEmployee(to: company? ?? "NA", name: txtEmpName.text ?? "11", Salary: txtEmpSalary.text ?? "10")
+            txtEmpName.text = ""
+            txtEmpSalary.text = ""
+
         }
             
     }

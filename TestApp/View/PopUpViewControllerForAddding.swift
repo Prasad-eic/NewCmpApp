@@ -12,7 +12,7 @@ protocol DataEnteredDelegate: AnyObject {
     func sentEmpData(Name:String , Salary:String)
 }
 
-class PopUpViewControllerForAddding: UIViewController {
+class PopUpViewControllerForAddding: UIViewController , UITextFieldDelegate {
     weak var delegate: DataEnteredDelegate? = nil
 
     @IBOutlet weak var txtCompanyName: UITextField!
@@ -53,6 +53,7 @@ class PopUpViewControllerForAddding: UIViewController {
         txtCompanyName.placeholder = "Company Name - ".localizeString(string: language)
         txtEmpName.placeholder = "Name".localizeString(string: language)
         txtEmpSalary.placeholder = "Salary".localizeString(string: language)
+        txtEmpSalary.delegate = self
 
     }
     
@@ -70,7 +71,11 @@ class PopUpViewControllerForAddding: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
     @IBAction func onCloseButtonPressed(_ sender: UIButton) {
            self.dismiss(animated: true, completion: nil)
        }

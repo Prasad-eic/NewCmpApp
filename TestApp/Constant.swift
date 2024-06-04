@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 struct Constants{
     
     static let employeeCell = "employeeCell"
@@ -23,6 +24,8 @@ struct Constants{
     static let salary_Name_Req = "Max Salary Or Min Salary Or Name Required"
     
     static var getlan = UserDefaults.standard.object(forKey: "AppLanguage") as? String
+    
+   
     
 }
 extension String {
