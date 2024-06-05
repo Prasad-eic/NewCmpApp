@@ -104,7 +104,9 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         }
         else{
             let salVal = Double(txtEmpSalary.text ?? "11" )!
-            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
+//            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
+            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "Prasad_Corp", Id: 111)
+
 //            self.NewviewModel.addEmployee(to: company? ?? "NA", name: txtEmpName.text ?? "11", Salary: txtEmpSalary.text ?? "10")
             txtEmpName.text = ""
             txtEmpSalary.text = ""
@@ -135,9 +137,8 @@ extension EmployeeViewController {
         let cmp = viewModel.Employee(at: indexPath.row)
         cell.titleLabel.text = cmp.empName
         let salary = String(cmp.empSalary)
-        print(cmp.empCompanyName!)
         cell.salaryLabel.text = salary
-        
+        print("Company Name - \(String(describing: cmp.empCompanyName)) ")
         cell.lblNameText.text = "Name :-".localizeString(string:language )
         cell.lblSalaryText.text = "Salary :-".localizeString(string:language )
         cell.btnDelete.titleLabel?.text = "DELETE".localizeString(string: language)

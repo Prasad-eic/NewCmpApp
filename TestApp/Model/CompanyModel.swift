@@ -22,7 +22,21 @@ extension Company {
     @NSManaged public var id: Int16
     @NSManaged public var employees:NSSet
 }
-
+//extension CompanyEntity {
+//
+//    @objc(addEmployeesObject:)
+//    @NSManaged public func addToEmployees(_ value: EmpEntity)
+//
+//    @objc(removeEmployeesObject:)
+//    @NSManaged public func removeFromEmployees(_ value: EmpEntity)
+//
+//    @objc(addEmployees:)
+//    @NSManaged public func addToEmployees(_ values: NSSet)
+//
+//    @objc(removeEmployees:)
+//    @NSManaged public func removeFromEmployees(_ values: NSSet)
+//
+//}
 extension Company : Identifiable {
 
 }
