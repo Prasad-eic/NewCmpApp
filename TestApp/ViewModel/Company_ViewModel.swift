@@ -45,6 +45,33 @@ class CompanyViewModel {
         } catch {
             print("Failed to fetch company: \(error)")
         }
+        
+
+    }
+    
+    func employees(cmp: Company) -> [EmpEntity] {
+        let request: NSFetchRequest<EmpEntity> = Employee.fetchRequest()
+        request.predicate = NSPredicate(format: "company = %@", cmp)
+//        request.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: false)]
+        var fetchedSongs: [EmpEntity] = []
+        
+        do {
+            fetchedSongs = try context.fetch(request)
+        } catch let error {
+            print("Error fetching songs \(error)")
+        }
+        return fetchedSongs
+    }
+    
+    func addEmp(name: String, salary: String, cmp: Company) -> Employee {
+        let emp = Employee(context: context)
+//        song.title = title
+//        song.releaseDate = releaseDate
+//        singer.addToSongs(song)
+        emp.empName = name
+        emp.empSalary = salary
+        cmp.addValuesToEmployee(emp)
+        return emp
     }
     
     func addEmployee(name: String,salary: Double,cmpName: String, Id: Int16) {

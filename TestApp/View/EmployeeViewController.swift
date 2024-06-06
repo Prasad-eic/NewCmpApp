@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
 class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,DataEnteredDelegate, sendFilterDataDelegate ,UITextFieldDelegate{
    
     
    
     private var viewModel = EmployeeViewModel()
-    private var NewviewModel = CompanyViewModel1()
+    private var CompanyviewModel = CompanyViewModel()
     var language = Constants.getlan ?? "--"
+    var songs = [EmpEntity]()
 
     var company: Company?
     @IBOutlet weak var txtEmpName: UITextField!
@@ -24,9 +27,9 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
     var filterVal:Int?
+    var empArray: NSMutableArray = []
+    var fetchedDataArray: [Dictionary<String, String>] = []
 
-
-    
     func sentEmpData(Name: String, Salary: String) {
         print("Name - \(Name) Sal - \(Salary)")
     }
@@ -50,7 +53,9 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         viewModel.didUpdateData = { [weak self] in
             self?.employeeTableView.reloadData()
         }
-                
+        if let singer = company {
+            songs = CompanyviewModel.employees(cmp: singer)
+        }
         language = (UserDefaults.standard.object(forKey: "AppLanguage") as? String ?? "QQQQ")
         lblTitle.text = "Find All Employees".localizeString(string:language )
         btnAdd.titleLabel?.text = "ADD".localizeString(string:language )
@@ -62,6 +67,12 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         viewModel.fetchAllEmployees(filterVal: 0, filterValForSort: "")
 //        textField(txtEmpSalary, shouldChangeCharactersIn: <#T##NSRange#>, replacementString: <#T##String#>)
         
+        empArray = viewModel.fetchValueGroupBy()
+        print("Array In EMP VC - \(empArray.count)")
+        fetchedDataArray = viewModel.fetchValueGroupBy() as! [Dictionary<String, String>]
+
+        let groupedByCountryName = Dictionary(grouping: fetchedDataArray) { $0["CompanyName"] }
+            print(groupedByCountryName.count)
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -106,6 +117,13 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
             let salVal = Double(txtEmpSalary.text ?? "11" )!
 //            self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "PSL Corp", Id: 111)
             self.viewModel.addEmployee(name: txtEmpName.text ?? "11", salary:salVal, cmpName: "Prasad_Corp", Id: 111)
+            
+            
+//            let song = DataManager.shared.song(title: titleTextField.text ?? "", releaseDate: releaseDateTextField.text ?? "", singer: singer!)
+            
+            let emp = self.CompanyviewModel.addEmp(name: txtEmpName.text ?? "11", salary:"\(salVal)", cmp: company!)
+//            songs.append(emp)
+
 
 //            self.NewviewModel.addEmployee(to: company? ?? "NA", name: txtEmpName.text ?? "11", Salary: txtEmpSalary.text ?? "10")
             txtEmpName.text = ""

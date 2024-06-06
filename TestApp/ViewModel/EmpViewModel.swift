@@ -97,9 +97,71 @@ class EmployeeViewModel {
         getValueByName()
 //        fetchValueGroupBy()
     }
-    func fetchValueGroupBy()
+    func fetchValueGroupBy() -> NSMutableArray
     {
         
+        let fetchRequest11 = NSFetchRequest<NSFetchRequestResult>(entityName: "EmpEntity")
+        
+        let empArray: NSMutableArray = []
+        let dictionary: NSMutableDictionary = [:]
+        var fetchedDataArray: [Dictionary<String, String>] = []
+
+        do {
+             let results   = try context.fetch(fetchRequest11)
+             let locations = results as! [EmpEntity]
+                
+             for location in locations {
+//                 print(location.empCompanyName ?? "__")
+//                 print(location.empName ?? "__")
+
+//                 emptyArray.append(["trackMake":location.empName])
+//                 dictionary["COmpanyName"]?.append(location.empCompanyName ?? "")
+//                 dictionary["Name"]?.append(location.empName ?? "")
+                 let strSalary = String(location.empSalary)
+
+                 dictionary["CompanyName"] = String(location.empCompanyName ?? "")
+                 dictionary["Name"] = location.empName
+                 dictionary["Salary"] = strSalary
+//                 print("Dict Val - \(dictionary)")
+//                 emptyArray.add(dictionary)
+//                 emptyArray.append
+//                 print("ArrayInLoop - \(emptyArray)")
+//                 myArray.append(["COmpanyName":location.empCompanyName ?? "-","Name":location.empName ?? "-","Salary":location.empSalary])
+                 fetchedDataArray.append(dictionary as! Dictionary<String, String>)
+//                 print("ArrayInLoop - \(fetchedDataArray)")
+
+//                 emptyArray.add("This String")
+
+             }
+            let groupedByCountryName = Dictionary(grouping: fetchedDataArray) { $0["CompanyName"] }
+//            print(groupedByCountryName.count)
+            
+            for itm in 0...groupedByCountryName.count-1 {
+                print("grpuped - \(Array(groupedByCountryName)[itm].value[0])")
+            }
+            
+//           print("First Value - \(Array(groupedByCountryName)[0].value)")
+            empArray.add(groupedByCountryName)
+//            print("Array Value - \(empArray[0])")
+
+            
+
+//            print("All Dict - \(dictionary)")
+//            print("Array - \(myArray[2])")
+        } catch let error as NSError {
+          print("Could not fetch \(error)")
+        }
+        
+        
+        let fetchRequest = NSFetchRequest<EmpEntity>(entityName: "EmpEntity")
+           do {
+               let result = try context.fetch(fetchRequest)
+               let nameArray = result.map{$0.empCompanyName}
+               print(nameArray)
+           } catch {
+              print("Could not fetch \(error) ")
+           }
+        return empArray
     }
         func addEmployee(name: String,salary: Double,cmpName: String, Id: Int16) {
         let newEmpployee = EmpEntity(context: context)
