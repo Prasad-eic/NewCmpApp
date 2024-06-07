@@ -14,7 +14,7 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
     
    
     private var viewModel = EmployeeViewModel()
-    private var CompanyviewModel = CompanyViewModel()
+    private var CompanyviewModel:CompanyViewModel!
     var language = Constants.getlan ?? "--"
     var songs = [EmpEntity]()
 
@@ -71,8 +71,8 @@ class EmployeeViewController: UIViewController ,UITableViewDelegate, UITableView
         print("Array In EMP VC - \(empArray.count)")
         fetchedDataArray = viewModel.fetchValueGroupBy() as! [Dictionary<String, String>]
 
-        let groupedByCountryName = Dictionary(grouping: fetchedDataArray) { $0["CompanyName"] }
-            print(groupedByCountryName.count)
+//        let groupedByCountryName = Dictionary(grouping: fetchedDataArray) { $0["CompanyName"] }
+//            print(groupedByCountryName.count)
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

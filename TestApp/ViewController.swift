@@ -36,6 +36,15 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var val = "94761178"
+        var num = Int(val)
+        if num != nil {
+         print("Valid Integer")
+        }
+        else {
+         print("Not Valid Integer")
+        }
+        
         self.userDefaults.set("en", forKey: "AppLanguage")
         self.userDefaults.synchronize()
         print(Constants.getlan ?? "--")
@@ -73,7 +82,6 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
                 print("User click English")
                 self.userDefaults.set("en", forKey: "AppLanguage")
                 self.userDefaults.synchronize()
-
                 self.changeLanguage()
             }))
             

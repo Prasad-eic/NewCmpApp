@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3964BE5B2C131D69005E0B33 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3964BE5A2C131D69005E0B33 /* Observer.swift */; };
 		39A5B3652C073A8E0061C38C /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A5B3642C073A8E0061C38C /* CompanyViewController.swift */; };
 		39A5B3672C073AAE0061C38C /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A5B3662C073AAE0061C38C /* CompanyViewModel.swift */; };
 		39A5B3812C08871C0061C38C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A5B3802C08871C0061C38C /* Constant.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3964BE5A2C131D69005E0B33 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		39A5B3642C073A8E0061C38C /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		39A5B3662C073AAE0061C38C /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewModel.swift; sourceTree = "<group>"; };
 		39A5B3802C08871C0061C38C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				39AC56EA2BFE2A69003227B4 /* Company_ViewModel.swift */,
 				39AC56F02BFE4EA1003227B4 /* EmpViewModel.swift */,
 				39A5B3662C073AAE0061C38C /* CompanyViewModel.swift */,
+				3964BE5A2C131D69005E0B33 /* Observer.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				39A5B3812C08871C0061C38C /* Constant.swift in Sources */,
 				39AC56F12BFE4EA1003227B4 /* EmpViewModel.swift in Sources */,
 				39AC56EF2BFE2B0D003227B4 /* PopUpViewControllerForAddding.swift in Sources */,
+				3964BE5B2C131D69005E0B33 /* Observer.swift in Sources */,
 				39AC56F52BFF40DB003227B4 /* EmployeeTableViewCell.swift in Sources */,
 				39DF24C42A5C20A30091747D /* AppDelegate.swift in Sources */,
 				39A5B3672C073AAE0061C38C /* CompanyViewModel.swift in Sources */,

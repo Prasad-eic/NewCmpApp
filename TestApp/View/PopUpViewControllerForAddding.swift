@@ -54,9 +54,30 @@ class PopUpViewControllerForAddding: UIViewController , UITextFieldDelegate {
         txtEmpName.placeholder = "Name".localizeString(string: language)
         txtEmpSalary.placeholder = "Salary".localizeString(string: language)
         txtEmpSalary.delegate = self
+        txtEmpSalary.text = "\(validatetxtData(name: "1234"))"
+        initialSetup()
 
     }
-    
+    func validatetxtData (name:String) -> Bool
+    {
+        var val:Bool?
+
+        var num = Int(name)
+        if num != nil {
+         print("Valid Integer")
+            val = true
+        }
+        else {
+         print("Not Valid Integer")
+            val = false
+        }
+        return val ?? true
+    }
+    private func initialSetup() {
+           // give accessibility identifier programmatically
+           txtEmpName.accessibilityIdentifier = "txtName"
+           txtEmpSalary.accessibilityIdentifier = "txtSalary"
+       }
     @IBAction func btnAddTapped(_ sender: Any) {
         if (txtCompanyName.text!.isEmpty) {
             

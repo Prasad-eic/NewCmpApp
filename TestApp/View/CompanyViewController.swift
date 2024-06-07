@@ -23,18 +23,18 @@ class CompanyViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
-        bindViewModel()
+//        bindViewModel()
         viewModel.fetchCompanies()
         let leftNaviButton = UIBarButtonItem(image: UIImage(named: "more")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(BtnMoreTapped))
            self.navigationItem.leftBarButtonItem = leftNaviButton
     }
 
-    private func bindViewModel() {
-        viewModel.companiesChanged = { [weak self] companies in
-            self?.companies = companies
-            self?.tableView.reloadData()
-        }
-    }
+//    private func bindViewModel() {
+//        viewModel.companiesChanged = { [weak self] companies in
+//            self?.companies = companies
+//            self?.tableView.reloadData()
+//        }
+//    }
    
     @IBAction func BtnMoreTapped() {
         let alert = UIAlertController(title: "Add Company", message: nil, preferredStyle: .alert)

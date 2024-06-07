@@ -80,9 +80,17 @@ class FilterViewController: UIViewController , UITextFieldDelegate {
 
         txtMaxSalary.delegate = self
         txtMinSalary.delegate = self
+        
+        txtNameSalary.text = "\(calculateSum(num1: 5, num2: 10))"
+        
 
 
     }
+    
+    func calculateSum(num1: Int, num2: Int) -> Int {
+          return (num1 + num2)
+       }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
